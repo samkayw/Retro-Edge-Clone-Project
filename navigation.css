@@ -1,0 +1,42 @@
+nav {
+    /* style */
+    color: var(--white);
+    background-color: var(--royal-king-purple);
+
+    /* padding and margins */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+
+    /* postion */
+    display: flex;
+    flex-direction: row-reverse;
+    position: sticky;
+    /* top has to be called for sticky to work */
+    top: 0;
+}
+
+/* link styles */
+nav a {
+    /* style */
+    color: var(--white);
+    font-size: 26px;
+    text-decoration: none;
+
+    /* padding and margins */
+    margin-left: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* hover state */
+nav a:hover {
+    color: var(--neon-green);
+}
+
+/* selected state */
+nav a:active {
+    color: var(--neon-green);
+    text-decoration: underline;
+}

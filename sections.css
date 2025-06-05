@@ -1,0 +1,53 @@
+/* ########################################## SECTION 1 ##################################################*/
+
+section {
+    /* flex box dimensions */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    /* spaceing between each section */
+    margin-bottom: 7%;
+}
+
+section h2 {
+    font-size: 48px;
+    text-align: center;
+    color: var(--neon-green);
+}
+
+section p {
+    text-align: center;
+    font-size: 24px;
+    color: var(--white);
+}
+
+.section-1-image {
+    width: 20%;
+    height: auto;
+
+}
+
+/* game tile */
+section table {
+    border: 5px solid transparent;
+    border-collapse: separate;
+    border-spacing: 8px;
+    width: 20%;
+    aspect-ratio: 1/.7;
+}
+
+section td {
+    background-color: var(--N64-plastic);
+    padding: 3%;
+}
+
+section td img {
+    width: 100%;
+}
+
+/* ########################################## SECTION 2 ##################################################*/
+
+#section-2 {
+    
+}

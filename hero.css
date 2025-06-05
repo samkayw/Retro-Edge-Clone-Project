@@ -1,0 +1,38 @@
+.hero {
+    /* viewport setting */
+    height: 100vh;
+    width: 100vw;
+
+    /* flexbox setting */
+    display: flex;
+    flex-direction: column;
+    /* align-items and not content because if we did content it would stretch everything in that line */
+    align-items: center; 
+    justify-items: center;
+
+    /* background image */
+    background-image: url('./image assets/DesktopSplash\ 1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* use if image is unavailabe */
+    background-color: blueviolet;
+
+}
+
+.hero img {
+    /* iamge sizing */
+    height: 40%;
+    width: auto;
+
+    /* padding and spacing */
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.hero p {
+    font-size: 32px;
+    text-align: center;
+    color: #fff;
+    width: 40%;
+}
