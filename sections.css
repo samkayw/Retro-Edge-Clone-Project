@@ -137,18 +137,57 @@ section td img {
     border-collapse: separate;
     border-spacing: 4px;
     width: 60%;
-    aspect-ratio: 1/.5;
+
+    /* this works for some reason here */
+    height: 50px;
+
+    /* aspect-ratio: 1/.5; */
 }
 
 #section-3 td {
     background-color: var(--N64-plastic);
     color: var(--white);
     padding: 3%;
+    text-align: center;
+    vertical-align: top;
+
+    padding: 2%;
+    
 }
 
 #section-3 td button{
+    font-size: 100%;
+    text-align: center;
+    font-size: clamp(8px, 1.3vw, 28px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+
+    width: 100%;
     max-width: 173px;
     height: auto;
+
+    /*  */
+    box-sizing: border-box;
+}
+
+#month-text {
+    font-size: clamp(8px, 1.5vw, 30px);
+}
+
+#day-text {
+    font-size: clamp(12px, 3vw, 65px);
+    font-weight: bolder;
+}
+
+#event-title {
+    font-size: clamp(15px, 1.5vw, 30px);
+    font-weight: bolder;
+}
+
+#event-description {
+    font-size: clamp(12px, 1.5vw, 20px);
+    font-weight: lighter;
 }
 
 
