@@ -1,7 +1,7 @@
 .hero {
     /* viewport setting */
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 
     /* flexbox setting */
     display: flex;
@@ -16,7 +16,7 @@
     background-size: cover;
     background-position: center;
     /* use if image is unavailabe */
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 
 }
 
