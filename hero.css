@@ -22,17 +22,26 @@
 
 .hero img {
     /* iamge sizing */
-    height: 40%;
+    height: 45%;
     width: auto;
 
     /* padding and spacing */
-    padding-top: 5%;
-    padding-bottom: 2%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.hero h1 {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 1%;
 }
 
 .hero p {
     font-size: 32px;
+    font-weight: 100;
     text-align: center;
     color: #fff;
-    width: 40%;
+    width: 50%;
+
+    margin-top: 0;
 }

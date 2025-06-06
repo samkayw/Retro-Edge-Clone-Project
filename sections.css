@@ -14,6 +14,7 @@ section h2 {
     font-size: 48px;
     text-align: center;
     color: var(--neon-green);
+    margin-bottom: 0;
 }
 
 section p {
@@ -30,9 +31,9 @@ section p {
 
 /* game tile */
 section table {
-    border: 5px solid transparent;
+    border: 2px solid transparent;
     border-collapse: separate;
-    border-spacing: 8px;
+    border-spacing: 4px;
     width: 20%;
     aspect-ratio: 1/.7;
 }
@@ -49,5 +50,106 @@ section td img {
 /* ########################################## SECTION 2 ##################################################*/
 
 #section-2 {
+    /* put the entire section in a new flexbox and hike all of its contents to the top */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     
 }
+
+/* image side */
+#section-2 .section-2-left {
+    /* put the left side in its own flexbox */
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    /* put items in the center of the flexbox */
+    justify-content: center;
+    align-items: center;
+}
+
+#section-2 .section-2-left figcaption {
+    color: var(--white);
+    text-align: right;
+    
+}
+
+/* image dimensions */
+#section-2 img{
+    height: 70vh;
+    width: auto;
+    padding-left: 25%;
+}
+
+/* text side */
+#section-2 .section-2-right {
+    /* put the text side in a new flex box */
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* hike it to the top */
+    justify-content: flex-start;
+    align-items:flex-start;
+
+}
+
+#section-2 .section-2-right h2{
+    text-align: left;
+    text-justify: center;
+    width: 40vw;
+
+    /* padding and margins */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#section-2 .section-2-right p{
+    text-align: left;
+    text-justify: center;
+    width: 35vw;
+    padding-right: 20%;
+
+    /* padding and margin */
+    margin-bottom: 7%;
+}
+
+/* button ingerting other styles and props from style.css */
+#section-2 .section-2-right button{
+    margin-left: 20%;
+}
+
+/* button hover state - alternate states piggy back off of the old one*/ 
+#section-2 .section-2-right button:hover{
+    /* color */
+    border: 5px solid var(--neon-green);
+}
+
+
+/* ########################################## SECTION 3 ##################################################*/
+
+#section-3 {
+
+}
+
+#section-3 table {
+    border: 2px solid transparent;
+    border-collapse: separate;
+    border-spacing: 4px;
+    width: 60%;
+    aspect-ratio: 1/.5;
+}
+
+#section-3 td {
+    background-color: var(--N64-plastic);
+    color: var(--white);
+    padding: 3%;
+}
+
+#section-3 td button{
+    max-width: 173px;
+    height: auto;
+}
+
+
+
