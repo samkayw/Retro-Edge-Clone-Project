@@ -217,7 +217,7 @@ section p {
 
 .spacer {
     height: 100%;
-    margin-bottom: 6%;
+    margin-bottom: 100px;
 }
 
 #section-4 table {
@@ -233,3 +233,45 @@ section p {
     padding: 0px;
 }
 
+/* ########################################## SECTION 5 ##################################################*/
+
+#section-5 {
+
+}
+
+#section-5 img {
+    width: 30%;
+    height: auto;
+
+}
+
+#section-5-image-block {
+    position: relative;
+}
+
+#section-5-text-block {
+    position: absolute;
+    left: 48%;
+
+    padding-left: 1%;
+}
+
+#section-5-text-1{
+    text-decoration: underline;
+    text-align: left;
+}
+
+#section-5-text-2 {
+    font-size: 12px;
+    text-align: left;
+    color: grey;
+    padding-left: 1%;
+}
+
+
+/* ########################################## FOOTER ##################################################*/
+footer {
+    background-color: var(--royal-king-purple);
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
