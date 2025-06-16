@@ -1,4 +1,4 @@
-/* ########################################## SECTION 1 ##################################################*/
+/* ########################################## SECTION 1: CHECK OUT SOME OF THE GAMES ##################################################*/
 
 section {
     /* flex box dimensions */
@@ -49,7 +49,7 @@ section p {
     width: 100%;
 }
 
-/* ########################################## SECTION 2 ##################################################*/
+/* ########################################## SECTION 2: BIG EVENT OF THE MONTH ##################################################*/
 
 #section-2 {
     /* put the entire section in a new flexbox and hike all of its contents to the top */
@@ -72,8 +72,11 @@ section p {
 }
 
 #section-2 .section-2-left figcaption {
+    font-size: clamp(8px, 1vw, 12px);
+    margin-left: 80%;
     color: var(--white);
-    text-align: right;
+    text-align: left;
+    width: 100%;
     
 }
 
@@ -108,7 +111,7 @@ section p {
 
 #section-2 .section-2-right p{
     text-align: justify;
-    width: 30vw;
+    width: 37vw;
     padding-right: 20%;
 
     /* padding and margin */
@@ -117,7 +120,7 @@ section p {
 
 /* button ingerting other styles and props from style.css */
 #section-2 .section-2-right button{
-    margin-left: 15%;
+    margin-left: 23%;
 }
 
 /* button hover state - alternate states piggy back off of the old one*/ 
@@ -127,7 +130,7 @@ section p {
 }
 
 
-/* ########################################## SECTION 3 ##################################################*/
+/* ########################################## SECTION 3: OTHER BIG EVENTS THIS MONTH ##################################################*/
 
 #section-3 {
 
@@ -137,7 +140,7 @@ section p {
     border: 2px solid transparent;
     border-collapse: separate;
     border-spacing: 4px;
-    width: 60%;
+    width: 55%;
 
     /* this works for some reason here */
     height: 50px;
@@ -191,7 +194,7 @@ section p {
     font-weight: lighter;
 }
 
-/* ########################################## SECTION 4 ##################################################*/
+/* ########################################## SECTION 4: YOU ON CUZ WE ARE ##################################################*/
 
 .image-container {
   position: relative;        
@@ -232,7 +235,7 @@ section p {
     padding: 0px;
 }
 
-/* ########################################## SECTION 5 ##################################################*/
+/* ########################################## SECTION 5: BUS WALK MAN ##################################################*/
 
 #section-5 {
 
