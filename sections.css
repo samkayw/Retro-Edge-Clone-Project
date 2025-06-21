@@ -238,7 +238,9 @@ section p {
 /* ########################################## SECTION 5: BUS WALK MAN ##################################################*/
 
 #section-5 {
-
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 #section-5 img {
@@ -249,16 +251,16 @@ section p {
 
 #section-5-image-block {
     position: relative;
+
 }
 
 #section-5-text-block {
-    position: absolute;
     left: 48%;
-
     padding-left: 1%;
 }
 
 #section-5-text-1{
+    font-size: clamp(12px, 2vw, 32px);
     text-decoration: underline;
     text-align: left;
 }
