@@ -38,7 +38,7 @@
 }
 
 .hero p {
-    font-size: 32px;
+    font-size: clamp(20px, calc(1.13vw + 15.77px), 32px);
     font-weight: 100;
     text-align: center;
     color: #fff;

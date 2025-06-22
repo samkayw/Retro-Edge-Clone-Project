@@ -11,7 +11,7 @@ section {
 }
 
 section h2 {
-    font-size: 48px;
+    font-size: clamp(24px, calc(2.25vw + 15.55px), 48px);
     text-align: center;
     color: var(--neon-green);
     margin-bottom: 0;
@@ -19,7 +19,7 @@ section h2 {
 
 section p {
     text-align: center;
-    font-size: 24px;
+    font-size: clamp(16px, calc(0.8vw + 13px), 24px);
     color: var(--white);
 }
 
