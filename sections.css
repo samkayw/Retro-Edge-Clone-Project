@@ -281,7 +281,78 @@ section p {
 /* MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE */
 
 @media screen and (max-width: 600px) {
-    h2 {
-    
+    .section-1-image {
+        width: 90%;
+        height: auto;
     }
+
+    #section-1 table {
+    border-spacing: 2px;
+    width: 85%;
+
+    /* aspect ratio here is keeping us sqaure */
+    aspect-ratio: 1/.7;
+}
+
+    #section-2 {
+        flex-direction: column;
+        align-items: center;
+}
+
+/* even though we break this out later with display contents, it has to be manipulated before hand */
+    #section-2 .section-2-right p{
+        width: 80vw;
+        padding: 0;
+
+}
+
+    #section-2 .section-2-right h2{
+        width: 80vw;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    #section-2 .section-2-right button{
+        margin: 0;
+    }
+
+    #section-2 .section-2-left figcaption {
+        margin-bottom: 16px;
+        text-align: left;
+        margin-right: 0;
+        margin-left: 0;
+        width: 75%;
+    }
+
+/* breaks out my contents and promotes it to section 2 */
+    #section-2 .section-2-right {
+        display: contents;
+}
+
+    #section-2 h2 {
+        order: 1;
+       
+
+    }
+    #section-2 p {
+        order: 2;
+    }
+
+    #section-2 .section-2-left {
+        order: 3;
+        padding: 0;
+        width: 100%;
+        
+    }
+
+    #section-2 img{
+        padding: 0;
+        width: 100%;
+    }
+
+
+
+    #section-2 button {order: 4}
+
+
 }
