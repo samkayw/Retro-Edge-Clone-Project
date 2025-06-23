@@ -19,8 +19,14 @@ nav {
     z-index: 2;
 }
 
+nav img {
+    height: 20px;
+    width: auto;
+    display: none;
+}
+
 /* link styles */
-nav a {
+.desktop-nav a {
     /* style */
     color: var(--white);
     font-size: 26px;
@@ -33,12 +39,33 @@ nav a {
 }
 
 /* hover state */
-nav a:hover {
+.desktop-nav a:hover {
     color: var(--neon-green);
 }
 
 /* selected state */
-nav a:active {
+.desktop-nav a:active {
     color: var(--neon-green);
     text-decoration: underline;
+}
+
+/* ########################################################################################################################################
+########################################################################################################################################
+######################################################################################################################################## */
+
+/* MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE */
+
+@media screen and (max-width: 600px) {
+    .desktop-nav a {
+        display: none;
+    }
+
+    nav img {
+        display: block;
+    }
+
+    nav {
+        padding-left: 36px;
+        padding-right: 36px;
+    }
 }
