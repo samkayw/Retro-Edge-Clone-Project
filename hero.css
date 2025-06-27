@@ -58,4 +58,11 @@
     .hero p {
         width: 90%;
     }
+
+    .hero img {
+        width: 85%;
+        height: auto;
+        padding-top: 24px;
+        padding-bottom: 16px;
+    }
 }

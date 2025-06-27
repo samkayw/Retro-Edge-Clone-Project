@@ -31,7 +31,7 @@ h1 {
 }
 
 /* button */
-button{
+button {
     /* dimensions */
     width: 200px;
     height: 50px;
@@ -61,8 +61,12 @@ button:hover{
 /* MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE */
 
 @media screen and (max-width: 600px) {
-    body {
 
+    button {
+        width: 128px;
+        height: 30px;
+        font-size: 14px;
+        border: 1.5px solid var(--Laser-Purple);
     }
 
 }

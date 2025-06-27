@@ -177,21 +177,21 @@ section p {
 }
 
 #month-text {
-    font-size: clamp(8px, 1.5vw, 30px);
+    font-size: clamp(14px, 1.5vw, 30px);
 }
 
 #day-text {
-    font-size: clamp(12px, 3vw, 65px);
+    font-size: clamp(20px, 3vw, 65px);
     font-weight: bolder;
 }
 
 #event-title {
-    font-size: clamp(15px, 1.5vw, 30px);
+    font-size: clamp(20px, 1.5vw, 30px);
     font-weight: bolder;
 }
 
 #event-description {
-    font-size: clamp(12px, 1.5vw, 20px);
+    font-size: clamp(14px, 1.5vw, 20px);
     font-weight: lighter;
 }
 
@@ -281,6 +281,19 @@ section p {
 /* MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE */
 
 @media screen and (max-width: 600px) {
+
+    section {
+        margin-bottom: 64px;
+    }
+
+    section p {
+        margin-bottom: 16px;
+    }
+
+    section h2 {
+        margin-bottom: 8px;
+    }
+
     .section-1-image {
         width: 90%;
         height: auto;
@@ -303,6 +316,8 @@ section p {
     #section-2 .section-2-right p{
         width: 80vw;
         padding: 0;
+
+        margin-bottom: 16px;
 
 }
 
@@ -347,12 +362,36 @@ section p {
 
     #section-2 img{
         padding: 0;
-        width: 100%;
+        width: 80%;
+        height: auto;
     }
 
 
 
     #section-2 button {order: 4}
+
+    #section-3 table {
+        width: 90%;
+        border-spacing: 2px;
+    }
+
+    .image-container img {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    #section-4 table {
+    margin-left: 5%;
+    margin-right: 5%;
+
+    }
+
+    #section-4 td {
+        background-color: transparent;
+         margin-left: 5%;
+        margin-right: 5%;
+    }
+
 
 
 }
