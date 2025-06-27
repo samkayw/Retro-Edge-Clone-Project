@@ -160,21 +160,6 @@ section p {
     
 }
 
-#section-3 td button{
-    font-size: 100%;
-    text-align: center;
-    font-size: clamp(8px, 1.3vw, 28px);
-    padding-top: 10px;
-    padding-bottom: 10px;
-
-
-    width: 100%;
-    max-width: 173px;
-    height: auto;
-
-    /*  */
-    box-sizing: border-box;
-}
 
 #month-text {
     font-size: clamp(14px, 1.5vw, 30px);
@@ -224,7 +209,7 @@ section p {
 }
 
 #section-4 table {
-    border: 2px solid transparent;
+    border: 4px solid transparent;
     border-collapse: separate;
     border-spacing: 4px;
     aspect-ratio: 1/1;
@@ -234,7 +219,31 @@ section p {
 #section-4 td {
     background-color: transparent;
     padding: 0px;
+
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+
+    width: 6vw;
 }
+
+#section-4 td img {
+   width: 80%;
+   height: 50%;
+}
+
+
+/* First Row Background Colors */
+#section-4 tr:nth-child(1) td:nth-child(1) {background-color:#5865F2;}
+#section-4 tr:nth-child(1) td:nth-child(2) {background-color: #FE0000;}
+#section-4 tr:nth-child(1) td:nth-child(3) {background-color: #00538C;}
+#section-4 tr:nth-child(1) td:nth-child(4) {background-color: #FF0044;}
+
+/* Second Row Background Colors */
+#section-4 tr:nth-child(2) td:nth-child(1) {background-color: #459ED8;}
+#section-4 tr:nth-child(2) td:nth-child(2) {background-color: #39539D;}
+#section-4 tr:nth-child(2) td:nth-child(3) {background-color: #A800FF;}
+#section-4 tr:nth-child(2) td:nth-child(4) {background-color: var(--neon-green);}
 
 /* ########################################## SECTION 5: BUS WALK MAN ##################################################*/
 
@@ -376,22 +385,24 @@ section p {
     }
 
     .image-container img {
-        width: 90%;
-        margin-left: 5%;
+        width: 85%;
+        margin-left: 7.5%;
     }
 
     #section-4 table {
     margin-left: 5%;
     margin-right: 5%;
-
     }
 
     #section-4 td {
-        background-color: transparent;
-         margin-left: 5%;
-        margin-right: 5%;
-    }
+    width: 20vw;
+}
 
+#section-5 img {
+    width: 80%;
+    height: auto;
+
+}
 
 
 }
