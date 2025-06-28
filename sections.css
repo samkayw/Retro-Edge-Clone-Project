@@ -183,8 +183,9 @@ section p {
 /* ########################################## SECTION 4: YOU ON CUZ WE ARE ##################################################*/
 
 .image-container {
-  position: relative;        
-  display: inline-block;     
+  display: flex;
+  justify-content: center;
+  position: relative;       
 }
 
 .image-container img {
@@ -195,8 +196,8 @@ section p {
 
 .overlay-text {
   position: absolute;        
-  top: 50%;                  
-  left: 20%;  
+  top: 67%;                  
+  left: 23%;  
   padding-bottom: 10%;                
   
   /* ensure it sits above the img */
@@ -386,7 +387,6 @@ section p {
 
     .image-container img {
         width: 85%;
-        margin-left: 7.5%;
     }
 
     #section-4 table {
@@ -396,6 +396,15 @@ section p {
 
     #section-4 td {
     width: 20vw;
+}
+
+.overlay-text {
+    top: 74%;
+    left: 32%;
+}
+
+.spacer {
+    margin-bottom: 64px;
 }
 
 #section-5 img {
