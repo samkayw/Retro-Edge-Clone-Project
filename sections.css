@@ -302,6 +302,15 @@ section p {
 
     section h2 {
         margin-bottom: 8px;
+        width: 90%;
+    }
+
+    #section-1-h2-subtitle {
+        margin: 0px;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
     }
 
     .section-1-image {
@@ -401,6 +410,10 @@ section p {
 .overlay-text {
     top: 74%;
     left: 32%;
+
+    padding: 0%;
+    width: 43%;
+
 }
 
 .spacer {
