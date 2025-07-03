@@ -1,23 +1,62 @@
 console.log("Im in your walls")
 
-let x, y, z;
-x = 5;
-y = 6;
-z = x + y;
 
-const r = 4, q = 2;
+const dog = {
+    firstName: "earth",
+    lastName: "walker",
+    breed: "mutt",
+    color: "brown",
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+    },
 
-console.log(r + 2)
+    Owner: {
+        name: "Kal",
+        favoriteFood: "ramem",
+    }
 
-console.log(z + x)
-
-
-let canVote = 18;
-let message = canVote >= 50 ? "No" : "Yes" 
-console.log(message)
+};
 
 
-let loggedIn = true;
-let buttonText = loggedIn ? "Logout" : "Login";
 
-console.log(buttonText); 
+
+console.log("My dog's full name is " + dog.fullName() + " and she is a " + dog["breed"])
+
+console.log("My owner's name is " + dog.Owner["name"] + " and his favorite food is " + dog.Owner["favoriteFood"])
+
+let space = "";
+
+for (let x in dog) {
+    space += dog[x] + ",";
+}; 
+
+
+console.log(space);
+
+const dogArray = JSON.stringify(dog)
+
+console.log(dogArray)
+
+function Guitar(brand, model, year, pups) {
+    this.brand = brand;
+    this.model= model;
+    this.year = year;
+    this.pups = pups;
+}
+Guitar.prototype.nationality = "Japanese";
+
+const guitar1 = new Guitar("teisco", "spectrumV", 1997, "split coil");
+const guitar2 = new Guitar("teisco", "spectrumV", 2015, "split coil");
+
+
+console.log(guitar1.nationality)
+
+function displayDate() {
+    document.getElementById('demo').innerHTML = 'There is a lot to know about this topic';
+}
+
+function closeDate() {
+    document.getElementById('demo').innerHTML = ''
+};
+
+function 
