@@ -29,10 +29,15 @@
 <body>
     <!-- navigation bar -->
     <nav class="desktop-nav">
-        <a  href="#" tabindex="3">Calendar</a>
-        <a  href="about.html" tabindex="2">About</a>
-        <a  href="#" tabindex="1">Home</a>
-        <img src="./image assets/Hamburger.svg" alt="Menu">
+        <!-- lets me control with js -->
+        <div class="navLinks"> 
+            <a  href="#" tabindex="3">Calendar</a>
+            <a  href="about.html" tabindex="2">About</a>
+            <a  href="#" tabindex="1">Home</a>
+        </div>
+
+        <!-- role tag because we are treating an image like a button -->
+        <img id="hamburgerMenu" role="button" src="./image assets/Hamburger.svg" alt="Menu">
     </nav>
 
     <!-- hero image -->

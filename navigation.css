@@ -57,7 +57,16 @@ nav img {
 
 @media screen and (max-width: 600px) {
     .desktop-nav a {
+        /* display: none; */
+    }
+
+    .navLinks {
         display: none;
+    }
+
+    .navLinks.active {
+        display: flex;
+        flex-direction: column;
     }
 
     nav img {
