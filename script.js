@@ -4,11 +4,11 @@ const navLinks = document.querySelector(".navLinks");
 
 
 // checks the html tag for navLinks and add or removes active from the class 
-function toggleHambuger() {
+function toggleHamburger() {
     navLinks.classList.toggle("active");
 }
 
-hamburger.addEventListener('click', toggleHambuger); 
+hamburger.addEventListener('click', toggleHamburger); 
 
 
 
