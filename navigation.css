@@ -68,30 +68,33 @@ nav img {
         margin: 0;
         width: 100vw;
 
-
-
+        /* beef up the font size */
+        font-size: 36px;
     }
 
     .navLinks {
+        /* hdden when not active */
         display: none;
 
         /* background */
-        background-color: rgba(76, 175, 80, .8);
+        background-color: rgba(44, 0, 75, 0.9);
         
     }
 
     .navLinks.active {
         display: flex;
         flex-direction: column;
+
+        position: absolute; 
         align-items: center;
         text-align: center;
-
-
-        position: absolute;
         left: 0%;
         top: 100%;
-
+        
         height: 100vh;
+
+        padding-top: 10%;
+
 
     }
 
