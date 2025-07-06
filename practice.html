@@ -12,10 +12,24 @@
 
 </head>
 <body>
-    <nav></nav>
+          <!-- navigation bar -->
+    <nav class="desktop-nav">
+        <!-- role tag because we are treating an image like a button -->
+        <img id="hamburgerMenu" role="button" src="./image assets/Hamburger.svg" alt="Menu">
+
+        
+        <!-- lets me control with js -->
+        <div class="navLinks"> 
+            <a  href="#" tabindex="3">Calendar</a>
+            <a  href="about.html" tabindex="2">About</a>
+            <a  href="#" tabindex="1">Home</a>
+        </div>
+        
+    </nav>
+
     <section>
         <h2 id="color-change">Retro Edge</h2>
-        <button id="btn">Button</button>
+        <button id="btnTarget" data-tooltip="Click me!">Button</button>
 
         <p id="demo" style="position:absolute; top:25%; "></p>
     </section>

@@ -1,35 +1,54 @@
 // Real work 
-const hamburger = document.getElementById("hamburgerMenu");
-const navLinks = document.querySelector(".navLinks");
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburgerMenu");
+    const navLinks = document.querySelector(".navLinks");
 
 
-// checks the html tag for navLinks and add or removes active from the class 
-function toggleHamburger() {
-    navLinks.classList.toggle("active");
-};
+    // checks the html tag for navLinks and add or removes active from the class 
+    function toggleHamburger() {
+        navLinks.classList.toggle("active");
+    }
+    
 
-hamburger.addEventListener('click', toggleHamburger); 
 
+    hamburger.addEventListener('click', toggleHamburger);
+});
 
 
 
 // // practice
 
 
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+// const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+// const days = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
 
-console.log(months[months.length - 1 ])
+// wholeYear = months.concat(days)
 
-let mlen = months.length;
-let text = "<ul>";
+// console.log(wholeYear.reverse())
 
-for (let i = 0; i < mlen; i++) {
-    text + '<li>' + months[i] + '</li>'; 
-}
 
-text += "</ul>";
+// console.log(Array.isArray(months)) 
 
-document.getElementById('demo').innerHTML = text;
+// console.log(wholeYear.join(" -- "))
+
+// console.log(months[months.length - 1 ])
+
+// let mlen = months.length;
+// let text = "<ul>";
+
+// for (let i = 0; i < mlen; i++) {
+//     text += '<li>' + months[i] + '</li>'; 
+
+//     console.log(text)
+// }
+
+// text += "</ul>";
+
+// console.log(text)
+
+// document.getElementById('demo').innerHTML = text;
+
+
 
 // console.log("Im in your walls")
 
