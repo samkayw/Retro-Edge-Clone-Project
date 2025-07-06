@@ -2,11 +2,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburgerMenu");
     const navLinks = document.querySelector(".navLinks");
+    const bars = document.querySelectorAll('.bar')
 
 
     // checks the html tag for navLinks and add or removes active from the class 
     function toggleHamburger() {
         navLinks.classList.toggle("active");
+        bars.forEach(bar => bar.classList.toggle('x'))
     }
     
 
