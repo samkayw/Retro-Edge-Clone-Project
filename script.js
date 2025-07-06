@@ -6,7 +6,7 @@ const navLinks = document.querySelector(".navLinks");
 // checks the html tag for navLinks and add or removes active from the class 
 function toggleHamburger() {
     navLinks.classList.toggle("active");
-}
+};
 
 hamburger.addEventListener('click', toggleHamburger); 
 
@@ -14,6 +14,22 @@ hamburger.addEventListener('click', toggleHamburger);
 
 
 // // practice
+
+
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+
+console.log(months[months.length - 1 ])
+
+let mlen = months.length;
+let text = "<ul>";
+
+for (let i = 0; i < mlen; i++) {
+    text + '<li>' + months[i] + '</li>'; 
+}
+
+text += "</ul>";
+
+document.getElementById('demo').innerHTML = text;
 
 // console.log("Im in your walls")
 
@@ -78,5 +94,3 @@ hamburger.addEventListener('click', toggleHamburger);
 // function displayDate() {
 //     document.getElementById('demo').innerHTML = 'There is a lot to know about this topic';
 // }
-
-
