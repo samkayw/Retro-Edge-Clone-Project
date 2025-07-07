@@ -109,9 +109,7 @@ nav img {
     }
 
     .x:nth-of-type(2){
-        transition: all 200ms ease-in-out;
-        transform-origin: center;
-        width: 0;
+        opacity: 0;
     }
 
     .x:nth-of-type(3){
