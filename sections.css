@@ -361,7 +361,11 @@ section p {
 /* breaks out my contents and promotes it to section 2 */
     #section-2 .section-2-right {
         display: contents;
-}
+    }
+
+    #section-2 .section-2-left figcaption {
+        text-align: center;
+    }
 
     #section-2 h2 {
         order: 1;
