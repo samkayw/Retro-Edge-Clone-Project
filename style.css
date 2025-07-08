@@ -26,11 +26,11 @@ html {
     /* load this color if background image unavailable */
     background-color: var(--royal-king-purple);
 
-    overscroll-behavior-y: none;
+    /* overscroll-behavior-y: none; */
 }
 
 body {
-    overscroll-behavior-y: none;
+    /* overscroll-behavior-y: none; */
 }
 
 h1 {
