@@ -6,6 +6,9 @@
     --N64-plastic: #7B1574;
     --Laser-Purple: #AB00FF;
     --white: #ffffff;
+
+    background-color: var(--royal-king-purple);
+
 }
 
 * {
