@@ -9,6 +9,7 @@
 
     background-color: var(--royal-king-purple);
 
+    
 }
 
 * {
@@ -25,6 +26,8 @@ html {
 
     /* load this color if background image unavailable */
     background-color: var(--royal-king-purple);
+
+    scroll-behavior: smooth;
 
     /* overscroll-behavior-y: none; */
 }
