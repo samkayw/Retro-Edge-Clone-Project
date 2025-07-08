@@ -10,10 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.classList.toggle("active");
         bars.forEach(bar => bar.classList.toggle('x'))
     }
+
+    function onBlur() {
+        navLinks.classList.remove("active")
+    }
     
 
 
     hamburger.addEventListener('click', toggleHamburger);
+    hamburger.addEventListener('blur', onBlur);
 });
 
 
