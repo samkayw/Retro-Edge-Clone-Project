@@ -21,7 +21,7 @@ html {
     background-position: center;
 
     /* load this color if background image unavailable */
-    background-color: var();
+    background-color: var(--royal-king-purple);
 
     overscroll-behavior-y: none;
 }
