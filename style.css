@@ -26,6 +26,10 @@ html {
     overscroll-behavior-y: none;
 }
 
+body {
+    overscroll-behavior-y: none;
+}
+
 h1 {
     /* only used on hero */
     font-size: clamp(32px, calc(3vw + 21px), 64px);
