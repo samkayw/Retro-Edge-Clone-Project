@@ -50,7 +50,8 @@
 }
 
 .about-section-2 img{
-    width: 120%;
+    width: 100%;
+    height: auto;
     margin-bottom: 16px;
 }
 
