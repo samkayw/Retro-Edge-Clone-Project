@@ -19,11 +19,6 @@ nav {
     z-index: 2;
 }
 
-nav img {
-    height: 20px;
-    width: auto;
-    display: none;
-}
 
 /* link styles */
 .desktop-nav a {
@@ -68,7 +63,6 @@ nav img {
         flex-direction: column;
         align-items:flex-end;
 
-        
     }
     
     /* the text inside of the drop down menu */
@@ -86,19 +80,33 @@ nav img {
     }
 
     .desktop-nav {
-         gap: 6px;
+         
     }
 
     /* the hamburger menu lines */
-    .desktop-nav .bar {
-        height: 5px;
+    #hamburgerMenu {
+        display: flex;
+        flex-direction: column;
+        height: 24px;
         width: 36px;
+
+        gap: 6px;
+
+        
+    }
+
+    #hamburgerMenu .bar {
+        /* display: block; */
+
+        height: 5px;
+        width: 30px;
         background-color: var(--neon-green);
         border-radius: 5px;
 
        
-        transform-origin: center center;
+        /* transform-origin: center center; */
         transition: all 200ms ease-in-out;
+
         
     }
 
