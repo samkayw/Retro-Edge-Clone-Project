@@ -22,6 +22,8 @@ html {
 
     /* load this color if background image unavailable */
     background-color: var();
+
+    overscroll-behavior-y: none;
 }
 
 h1 {
