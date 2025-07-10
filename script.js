@@ -14,11 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function onBlur() {
         navLinks.classList.remove("active")
     }
+
+    function onScroll() {
+        navLinks.classList.remove("active")
+    }
     
 
 
     hamburger.addEventListener('click', toggleHamburger);
     hamburger.addEventListener('blur', onBlur);
+    hamburger.addEventListener('scroll', onScroll);
 });
 
 
