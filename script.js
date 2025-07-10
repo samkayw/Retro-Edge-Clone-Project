@@ -11,19 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
         bars.forEach(bar => bar.classList.toggle('x'))
     }
 
-    function onBlur() {
-        navLinks.classList.remove("active")
-    }
 
     function onScroll() {
         navLinks.classList.remove("active")
+        bars.forEach(bar => bar.classList.remove('x'));
     }
+
     
-
-
     hamburger.addEventListener('click', toggleHamburger);
-    hamburger.addEventListener('blur', onBlur);
-    hamburger.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
 });
 
 
