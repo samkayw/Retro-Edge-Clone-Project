@@ -44,7 +44,7 @@ nav {
     text-decoration: underline;
 }
 
-.selected {
+#selected {
     color: var(--neon-green);
     text-decoration: underline;
 }
