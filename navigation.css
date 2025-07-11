@@ -93,7 +93,7 @@ nav {
 
         gap: 6px;
 
-        
+        transition: all 200ms ease-in-out;
     }
 
     #hamburgerMenu .bar {
