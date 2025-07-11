@@ -84,10 +84,6 @@ nav {
         padding: 0px;
     }
 
-    .desktop-nav {
-         
-    }
-
     /* the hamburger menu lines */
     #hamburgerMenu {
         display: flex;
@@ -117,7 +113,7 @@ nav {
 
 
     .x:nth-of-type(1){
-        transition: all 200ms ease-in-out;
+        transition: all 300ms ease-in-out;
         transform-origin: top right;
         transform: rotate(-45deg);
         width: 32.5px;
@@ -128,7 +124,7 @@ nav {
     }
 
     .x:nth-of-type(3){
-        transition: all 200ms ease-in-out;
+        transition: all 300ms ease-in-out;
         transform: rotate(45deg);
         transform-origin: bottom right;
         width: 32.5px;
