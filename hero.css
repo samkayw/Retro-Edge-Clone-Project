@@ -11,14 +11,15 @@
     justify-items: center;
 
     /* background image */
-    background-image: url('./image assets/DesktopSplash\ 1.png');
+    background-image: linear-gradient(0deg, rgba(27, 2, 44, 0.6) 2%, rgba(0, 0, 0, .05) 100%), url('./image assets/DesktopSplash\ 1.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     /* use if image is unavailabe */
     /* background-color: blueviolet; */
 
 }
+
 
 .hero img {
     /* iamge sizing */
@@ -28,6 +29,7 @@
     /* padding and spacing */
     padding-top: 3%;
     padding-bottom: 3%;
+
 }
 
 .hero h1 {
@@ -55,7 +57,11 @@
 /* MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE */
 
 @media screen and (max-width: 600px) {
-    
+
+    .hero {
+        background-image: linear-gradient(0deg, rgba(38, 2, 62, 0.6) 25%, rgba(0, 0, 0, .05) 100%), url('./image assets/Mobile\ Background\ Splash.png');
+    }
+
     .hero p {
         width: 90%;
     }
