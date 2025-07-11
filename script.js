@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     
-    hamburger.addEventListener('click', toggleHamburger);
+    hamburger.addEventListener('click', toggleHamburger)
     window.addEventListener('scroll', onScroll);
 });
 
