@@ -53,13 +53,15 @@ button {
     color: var(--neon-green);
     font-size: 20px;
     font-weight: bolder;
+
+    box-sizing: border-box;
 }
 
 /* button hover state - alternate states piggy back off of the old one*/ 
 button:hover{
     /* color */
     border: 5px solid var(--neon-green);
-    
+    box-sizing: border-box;
 }
 
 
@@ -76,6 +78,7 @@ button:hover{
         height: 30px;
         font-size: 14px;
         border: 1.5px solid var(--Laser-Purple);
+        box-sizing: border-box;
     }
 
 }
