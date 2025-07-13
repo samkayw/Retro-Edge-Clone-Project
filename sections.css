@@ -1,6 +1,5 @@
 /* ########################################## SECTION 1: CHECK OUT SOME OF THE GAMES ##################################################*/
 
-
 section {
     /* flex box dimensions */
     display: flex;
@@ -213,24 +212,26 @@ section p {
     border: 4px solid transparent;
     border-collapse: separate;
     border-spacing: 4px;
+
+    width: 19%;
+
     aspect-ratio: 1/1;
 
 }
 
 #section-4 td {
-    background-color: transparent;
     padding: 0px;
 
     text-align: center;
     vertical-align: middle;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 
-    width: 6vw;
+    /* width: 6vw; */
 }
 
 #section-4 td img {
    width: 80%;
-   height: 50%;
+   /* height: 50%; */
 }
 
 
