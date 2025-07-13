@@ -321,7 +321,7 @@ section p {
     #section-1 table {
     border-spacing: 2px;
     width: 85%;
-    height: 30vh;
+    height: 28vh;
 
     /* aspect ratio here is keeping us sqaure */
     aspect-ratio: 1/.7;
