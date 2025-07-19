@@ -13,7 +13,7 @@ footer p{
     color: var(--white);
     margin-bottom: 0px;
     font-size: clamp(12px, 1vw, 20px);
-    line-height: 10px;
+    line-height: 25px;
 }
 
 footer a {
