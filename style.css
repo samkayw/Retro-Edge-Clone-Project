@@ -39,6 +39,11 @@ h1 {
     color: var(--neon-green);
 }
 
+h3 {
+    font-size: 16px;
+    color: var(--neon-green);
+}
+
 /* button */
 button {
     /* dimensions */
