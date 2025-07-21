@@ -173,6 +173,7 @@
       /**
        *  Sign in the user upon button click.
        */
+// SIGN IN 
       function handleAuthClick() {
         tokenClient.callback = async (resp) => {
           if (resp.error !== undefined) {
@@ -192,10 +193,11 @@
           tokenClient.requestAccessToken({prompt: ''});
         }
       }
-
+// SIGN IN
       /**
        *  Sign out the user upon button click.
        */
+//SIGN OUT
       function handleSignoutClick() {
         const token = gapi.client.getToken();
         if (token !== null) {
@@ -206,7 +208,7 @@
           document.getElementById('signout_button').style.visibility = 'hidden';
         }
       }
-
+//SIGN OUT
       /**
        * Print the summary and start datetime/date of the next ten events in
        * the authorized user's calendar. If no events are found an
@@ -225,7 +227,7 @@
             'timeMin': (new Date()).toISOString(),
             'showDeleted': false,
             'singleEvents': true,
-            'maxResults': 10,
+            'maxResults': 100,
             'orderBy': 'startTime',
           };
 // API Calls List
@@ -238,9 +240,11 @@
           return;
         }
 
+        //drill down into response just to get the items and save it into the events
         const events = response.result.items;
         console.log(events)
 
+        //if there's no events show it here
         if (!events || events.length == 0) {
           document.getElementById('content').innerText = 'No events found.';
           return;
@@ -248,6 +252,7 @@
 
 
 //MY CALENDAR VARIABLES
+        //run through each event and reduct it down to just its title (summary) and when it starts (dateTime) and store it into output to be shown
         const output = events.reduce(
             (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
             'Events:\n');
