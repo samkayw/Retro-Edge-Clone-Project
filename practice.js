@@ -133,5 +133,5 @@ for (const item of items) {
     text += item + "<br>";
 }
 
-console.log(items.has('Master Balls'))
+console.log(items.has('Mas'))
 document.getElementById('demo').innerHTML = text;

@@ -52,8 +52,7 @@
 
 
 
-
-<!-- API -->
+<!-- SURFACE -->
 <section>
     <p>Google Calendar API Quickstart</p>
 
@@ -61,10 +60,10 @@
     <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
-    <h3 id="eventTitle" style="white-space: pre-wrap;"></h3>
-    <p id="eventStart"></p>
+     <header id="calendar-header"></header>
+     <div id="calendar-grid" class="calendar-grid"></div>
 </section>
-
+<!-- SURFACE -->
 
 
 
@@ -242,38 +241,90 @@
 
         //drill down into response just to get the items and save it into the events
         const events = response.result.items;
-        console.log(events)
+        const now = new Date();
+        renderCalendar(events, now.getMonth(), now.getFullYear());
 
         //if there's no events show it here
         if (!events || events.length == 0) {
           document.getElementById('content').innerText = 'No events found.';
           return;
         }
+      } 
+        console.clear()
+
 
 
 //MY CALENDAR VARIABLES
-        //run through each event and reduct it down to just its title (summary) and when it starts (dateTime) and store it into output to be shown
-        const output = events.reduce(
-            (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
-            'Events:\n');
+       function renderCalendar(events, month, year) {
+            // 1. Month name
+          const header = document.getElementById('calendar-header');
 
-        const eventTitle = events.reduce(
-            (str,event) => `${str}${event.summary}\n`, 'Events\n'
-        );
+          const monthNames = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+          ];
 
-        const eventStart = events.reduce(
-            (str, event) => `(${event.start.dateTime || event.start.date})\n`, 'Start Time:'
-        )
-//MY CALENDAR VARIABLES
+          // gives us the month and year in our calendar-header element
+          header.innerText = `${monthNames[month]} ${year}`;
 
 
+          // 2. Compute days
+          const grid = document.getElementById('calendar-grid');
+          grid.innerHTML = '';  // clear any old cells
 
-// DISPLAYING VARIABLES
-        document.getElementById('eventTitle').innerText = eventTitle;
-        document.getElementById('eventStart').innerText = eventStart;
-      }
-// DISPLAYING VARIABLES
+          const firstDay = new Date(year, month, 1).getDay();      // 0=Sunday
+          const daysInMonth = new Date(year, month+1, 0).getDate(); // 28–31
 
+          // 3. Add blank cells up to the first weekday
+          for (let i = 0; i < firstDay; i++) {
+            const empty = document.createElement('div');
+            grid.appendChild(empty);
+          }
+
+          // 4. Build each day cell
+          for (let date = 1; date <= daysInMonth; date++) {
+            const cell = document.createElement('div');
+            cell.className = 'calendar-day';
+
+          // a) Day number
+          const dn = document.createElement('div');
+          dn.className = 'day-number';
+          dn.innerText = date;
+          cell.appendChild(dn);
+
+          // b) Events container
+          const evList = document.createElement('div');
+          evList.className = 'events';
+
+          // c) Find events for this day
+          const dateStr = new Date(year, month, date).toISOString().slice(0,10); // "YYYY-MM-DD"
+
+          
+          events.filter(ev => {
+              const evDate = (ev.start.dateTime || ev.start.date).slice(0,10);
+              return evDate === dateStr;
+            })
+            .forEach(ev => {
+              const item = document.createElement('div');
+              item.className = 'event';
+              item.innerText = ev.summary;
+              evList.appendChild(item);
+            });
+
+          cell.appendChild(evList);
+          grid.appendChild(cell);
+  }
+}
 
     </script>
     
