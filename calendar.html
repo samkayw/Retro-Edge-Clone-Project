@@ -282,25 +282,41 @@
           const grid = document.getElementById('calendar-grid');
           grid.innerHTML = '';  // clear any old cells
 
-          const firstDay = new Date(year, month, 1).getDay();      // 0=Sunday
-          const daysInMonth = new Date(year, month+1, 0).getDate(); // 28–31
+          const firstDay = new Date(year, month, 1).getDay();      // For July this variable is 2 for tuesday
+          console.log(`My firstDay variable = ${firstDay}`)
+          const daysInMonth = new Date(year, month+1, 0).getDate(); //for July this variable is 31
+          console.log(`My daysInMonth variable = ${daysInMonth}`)
 
           // 3. Add blank cells up to the first weekday
-          for (let i = 0; i < firstDay; i++) {
+          //if first day is 2 then we are saying i is 0 and as long as firstday(2) is less than that we will create something called empty and add it to our grid element
+          for (let i = 0; i < firstDay; i++) { 
             const empty = document.createElement('div');
             grid.appendChild(empty);
           }
 
           // 4. Build each day cell
+          // if date is 1 than as long as days in months is greater than or equal to that day which it is because its 31, then we will make something called cell which is an
+          //empty div and then append on a className called caledar day? 
           for (let date = 1; date <= daysInMonth; date++) {
             const cell = document.createElement('div');
             cell.className = 'calendar-day';
 
+          //so so far we have 
+          // <div class='calendar-day'> 
+          // </div>
+
           // a) Day number
+          //create sonething called dn that is an empty div and then give it a class of day number and then set it equal to date and then append it as a child of cell
+          //oh wait we're still inside of the for loop so we do know what date is
           const dn = document.createElement('div');
           dn.className = 'day-number';
           dn.innerText = date;
           cell.appendChild(dn);
+
+          // So now we have
+          // <div class='calendar-day'> 
+          //    <div class='day-number'>date</div>  
+          // </div>
 
           // b) Events container
           const evList = document.createElement('div');
@@ -308,8 +324,9 @@
 
           // c) Find events for this day
           const dateStr = new Date(year, month, date).toISOString().slice(0,10); // "YYYY-MM-DD"
+          console.log(dateStr)
 
-          
+
           events.filter(ev => {
               const evDate = (ev.start.dateTime || ev.start.date).slice(0,10);
               return evDate === dateStr;

@@ -6,6 +6,7 @@
   max-width: 800px;
   margin: 0 auto;
   font-family: sans-serif;
+  
 }
 
 #calendar-header {
@@ -18,7 +19,9 @@
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 0px;
+  
+  
 }
 
 .calendar-day {
@@ -27,6 +30,8 @@
   padding: 4px;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--white);
+  background-color: var(--N64-plastic);
 }
 
 .day-number {
