@@ -255,91 +255,67 @@
 
 
 //MY CALENDAR VARIABLES
-       function renderCalendar(events, month, year) {
-            // 1. Month name
-          const header = document.getElementById('calendar-header');
+function renderCalendar(events, month, year) {
+  const header = document.getElementById('calendar-header');
+  const monthNames = [
+    'January','February','March','April','May','June',
+    'July','August','September','October','November','December'
+  ];
+  header.innerText = `${monthNames[month]} ${year}`;
 
-          const monthNames = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-          ];
+  const grid = document.getElementById('calendar-grid');
+  grid.innerHTML = '';
 
-          // gives us the month and year in our calendar-header element
-          header.innerText = `${monthNames[month]} ${year}`;
+  // 1) Compute first weekday & month lengths
+  const firstDay   = new Date(year, month, 1).getDay();       // 0=Sun…6=Sat
+  const daysInMonth= new Date(year, month+1, 0).getDate();    // e.g. 31
+  const daysInPrev = new Date(year, month,   0).getDate();    // e.g. 30 for June
 
+  // 2) Fill in tail of previous month (so “1” of this month lines up)
+  for (let i = firstDay - 1; i >= 0; i--) {
+    const d = daysInPrev - i;
+    const cell = document.createElement('div');
+    cell.className = 'calendar-day other-month';
+    cell.innerHTML = `<div class="day-number">${d}</div>`;
+    grid.appendChild(cell);
+  }
 
-          // 2. Compute days
-          const grid = document.getElementById('calendar-grid');
-          grid.innerHTML = '';  // clear any old cells
+  // 3) Fill in **this** month, with events
+  for (let date = 1; date <= daysInMonth; date++) {
+    const cell = document.createElement('div');
+    cell.className = 'calendar-day this-month';
 
-          const firstDay = new Date(year, month, 1).getDay();      // For July this variable is 2 for tuesday
-          console.log(`My firstDay variable = ${firstDay}`)
-          const daysInMonth = new Date(year, month+1, 0).getDate(); //for July this variable is 31
-          console.log(`My daysInMonth variable = ${daysInMonth}`)
+    // a) Day number
+    cell.innerHTML = `<div class="day-number">${date}</div>`;
 
-          // 3. Add blank cells up to the first weekday
-          //if first day is 2 then we are saying i is 0 and as long as firstday(2) is less than that we will create something called empty and add it to our grid element
-          for (let i = 0; i < firstDay; i++) { 
-            const empty = document.createElement('div');
-            grid.appendChild(empty);
-          }
+    // b) Event container
+    const evList = document.createElement('div');
+    evList.className = 'events';
 
-          // 4. Build each day cell
-          // if date is 1 than as long as days in months is greater than or equal to that day which it is because its 31, then we will make something called cell which is an
-          //empty div and then append on a className called caledar day? 
-          for (let date = 1; date <= daysInMonth; date++) {
-            const cell = document.createElement('div');
-            cell.className = 'calendar-day';
+    // c) Attach any events that match this date
+    const dateStr = new Date(year, month, date)
+                      .toISOString().slice(0,10); // “YYYY-MM-DD”
+    events
+      .filter(ev => (ev.start.dateTime||ev.start.date).slice(0,10) === dateStr)
+      .forEach(ev => {
+        const item = document.createElement('div');
+        item.className = 'event';
+        item.innerText = ev.summary;
+        evList.appendChild(item);
+      });
 
-          //so so far we have 
-          // <div class='calendar-day'> 
-          // </div>
+    cell.appendChild(evList);
+    grid.appendChild(cell);
+  }
 
-          // a) Day number
-          //create sonething called dn that is an empty div and then give it a class of day number and then set it equal to date and then append it as a child of cell
-          //oh wait we're still inside of the for loop so we do know what date is
-          const dn = document.createElement('div');
-          dn.className = 'day-number';
-          dn.innerText = date;
-          cell.appendChild(dn);
-
-          // So now we have
-          // <div class='calendar-day'> 
-          //    <div class='day-number'>date</div>  
-          // </div>
-
-          // b) Events container
-          const evList = document.createElement('div');
-          evList.className = 'events';
-
-          // c) Find events for this day
-          const dateStr = new Date(year, month, date).toISOString().slice(0,10); // "YYYY-MM-DD"
-          console.log(dateStr)
-
-
-          events.filter(ev => {
-              const evDate = (ev.start.dateTime || ev.start.date).slice(0,10);
-              return evDate === dateStr;
-            })
-            .forEach(ev => {
-              const item = document.createElement('div');
-              item.className = 'event';
-              item.innerText = ev.summary;
-              evList.appendChild(item);
-            });
-
-          cell.appendChild(evList);
-          grid.appendChild(cell);
+  // 4) Fill in head of next month so last week is full
+  const totalCells = firstDay + daysInMonth;
+  const need       = (7 - (totalCells % 7)) % 7;  
+  for (let d = 1; d <= need; d++) {
+    const cell = document.createElement('div');
+    cell.className = 'calendar-day other-month';
+    cell.innerHTML = `<div class="day-number">${d}</div>`;
+    grid.appendChild(cell);
   }
 }
 

@@ -52,3 +52,7 @@
   font-size: 0.85rem;
   margin-bottom: 2px;
 }
+
+.other-month {
+    opacity: .7;
+}
