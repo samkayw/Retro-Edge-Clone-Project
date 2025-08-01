@@ -26,12 +26,10 @@
 
 .calendar-grid {
   display: grid;
-  background-color: var(--N64-plastic);
+  /* background-color: var(--N64-plastic); */
   grid-template-columns: repeat(7, 1fr);
   width: 60vw;
   gap: 0px;
-  
-  
   
 }
 
@@ -43,6 +41,14 @@
   flex-direction: column;
   border: 1px solid var(--white);
   background-color: var(--N64-plastic);
+}
+
+.calendar-day:nth-last-child(1) {
+    border-bottom-right-radius: 15px;
+}
+
+.calendar-day:nth-last-child(7) {
+    border-bottom-left-radius: 15px;
 }
 
 .day-number {
@@ -65,11 +71,12 @@
 }
 
 .other-month {
-   
-  
+  opacity: .7;
 }
 
 .calendar-row-header {
     color: white;
     text-align: center;
+    background-color: var(--N64-plastic);
+    width: 100%;
 }
