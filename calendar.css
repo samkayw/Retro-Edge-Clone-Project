@@ -11,15 +11,26 @@
 
 #calendar-header {
         color: var(--neon-green);
-        text-align: center;
+        text-align: left;
         font-size: 2rem;
         margin-bottom: 1rem;
+        background-color: var(--N64-plastic);
+        width: 60vw;
+        margin-bottom: 0px;
+        padding-bottom: 1%;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        font-weight: bold;
+        ;
     }
 
 .calendar-grid {
   display: grid;
+  background-color: var(--N64-plastic);
   grid-template-columns: repeat(7, 1fr);
+  width: 60vw;
   gap: 0px;
+  
   
   
 }
@@ -54,5 +65,11 @@
 }
 
 .other-month {
-    opacity: .7;
+   
+  
+}
+
+.calendar-row-header {
+    color: white;
+    text-align: center;
 }

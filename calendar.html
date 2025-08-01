@@ -59,7 +59,7 @@
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
-
+    <h1>MONTHLY CALENDAR</h1>
      <header id="calendar-header"></header>
      <div id="calendar-grid" class="calendar-grid"></div>
 </section>
@@ -257,21 +257,43 @@
 //MY CALENDAR VARIABLES
 function renderCalendar(events, month, year) {
   const header = document.getElementById('calendar-header');
+  const weekdayNames = [
+    'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'
+  ];
+
+  const weekdayLength = weekdayNames.length;
+  console.log(weekdayLength)
+  console.log(weekdayNames)
+
+
   const monthNames = [
-    'January','February','March','April','May','June',
-    'July','August','September','October','November','December'
+    'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+    'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'
   ];
   header.innerText = `${monthNames[month]} ${year}`;
 
   const grid = document.getElementById('calendar-grid');
   grid.innerHTML = '';
 
+  
+
+  for (i = 0; weekdayLength > i; i++) {
+    const weekName = document.createElement('div')
+    weekName.className = 'calendar-row-header';
+    weekName.innerHTML = `<div>${weekdayNames[i]}</div>`;
+    console.log(weekName)
+    grid.append(weekName);
+  };
+
+
   // 1) Compute first weekday & month lengths
-  const firstDay   = new Date(year, month, 1).getDay();       // 0=Sun…6=Sat
-  const daysInMonth= new Date(year, month+1, 0).getDate();    // e.g. 31
-  const daysInPrev = new Date(year, month,   0).getDate();    // e.g. 30 for June
+  const firstDay   = new Date(year, month, 1).getDay();       // 0=Sun…6=Sat on this day is Tuesday
+  console.log(`firstDay = ${firstDay}`)
+  const daysInMonth= new Date(year, month+1, 0).getDate();    // e.g. 31 days of the current month and +1 because we init from index 0
+  const daysInPrev = new Date(year, month,   0).getDate();    // e.g. 30 for June 
 
   // 2) Fill in tail of previous month (so “1” of this month lines up)
+  //make i = to first day, which is 2 because it starts on tuesday and subtract 1 because >=. As long as i (1) is greater than or equal to 0 then create a variable called d which is days in prev - 1 = 29. and then make a thing called cell which is an empty div. Take the cell and give it 2 classes, calendar-day and other-month. Change the html to include the day number and then add it to the grid. This happens just two times 
   for (let i = firstDay - 1; i >= 0; i--) {
     const d = daysInPrev - i;
     const cell = document.createElement('div');
@@ -281,6 +303,7 @@ function renderCalendar(events, month, year) {
   }
 
   // 3) Fill in **this** month, with events
+  // if date is 1 and it is less than or equal to days in month which is 31 we will create a cell which is an empy div and give it a class of this month calendar-day. And then we give an innerhtml of day number and insert the date which will serve as the day number. And then create something called an evlist and set that to an empty div then give it a class called events. And then we will make a datestring called dateStr and we'll slice it down to a YYYY-MM-DD format we then take the given events param and filter it down with an ev token and if the start.dateTime matches the dateStr we will create an item that is an empty div, give that item a calss of event, make the inner html the event title and append it into the event list for that day and we'll increment until we're done. After we've done that we'll put the evlist in the 
   for (let date = 1; date <= daysInMonth; date++) {
     const cell = document.createElement('div');
     cell.className = 'calendar-day this-month';
@@ -293,11 +316,8 @@ function renderCalendar(events, month, year) {
     evList.className = 'events';
 
     // c) Attach any events that match this date
-    const dateStr = new Date(year, month, date)
-                      .toISOString().slice(0,10); // “YYYY-MM-DD”
-    events
-      .filter(ev => (ev.start.dateTime||ev.start.date).slice(0,10) === dateStr)
-      .forEach(ev => {
+    const dateStr = new Date(year, month, date).toISOString().slice(0,10); // “YYYY-MM-DD”
+    events.filter(ev => (ev.start.dateTime||ev.start.date).slice(0,10) === dateStr).forEach(ev => {
         const item = document.createElement('div');
         item.className = 'event';
         item.innerText = ev.summary;
