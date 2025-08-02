@@ -45,8 +45,9 @@
         </div>
         
     </nav>
+<img src="./image assets/PokeBall.png" alt="">
 
-
+    
 
 
 
@@ -270,13 +271,14 @@ function renderCalendar(events, month, year) {
     'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
     'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'
   ];
+
   header.innerText = `${monthNames[month]} ${year}`;
 
   const grid = document.getElementById('calendar-grid');
   grid.innerHTML = '';
 
   
-
+  //insert days of the week headers
   for (i = 0; weekdayLength > i; i++) {
     const weekName = document.createElement('div')
     weekName.className = 'calendar-row-header';
@@ -298,6 +300,7 @@ function renderCalendar(events, month, year) {
     const d = daysInPrev - i;
     const cell = document.createElement('div');
     cell.className = 'calendar-day other-month';
+    // image test
     cell.innerHTML = `<div class="day-number">${d}</div>`;
     grid.appendChild(cell);
   }
@@ -309,19 +312,26 @@ function renderCalendar(events, month, year) {
     cell.className = 'calendar-day this-month';
 
     // a) Day number
-    cell.innerHTML = `<div class="day-number">${date}</div>`;
+    cell.innerHTML = `<div class="day-number">${date} </div>`;
 
     // b) Event container
     const evList = document.createElement('div');
     evList.className = 'events';
 
+    const myImg = './image assets/PokeBall.png'
+
     // c) Attach any events that match this date
     const dateStr = new Date(year, month, date).toISOString().slice(0,10); // “YYYY-MM-DD”
     events.filter(ev => (ev.start.dateTime||ev.start.date).slice(0,10) === dateStr).forEach(ev => {
         const item = document.createElement('div');
+        const img = document.createElement('img');
+        // item.innerText = ev.summary;
+        img.src = myImg;
+        img.className = 'calendar-icon tooltip tooltiptext';
+        item.appendChild(img);
         item.className = 'event';
-        item.innerText = ev.summary;
         evList.appendChild(item);
+        // evList.appendChild(img);
       });
 
     cell.appendChild(evList);
@@ -330,7 +340,7 @@ function renderCalendar(events, month, year) {
 
   // 4) Fill in head of next month so last week is full
   const totalCells = firstDay + daysInMonth;
-  const need       = (7 - (totalCells % 7)) % 7;  
+  const need = (7 - (totalCells % 7)) % 7;  
   for (let d = 1; d <= need; d++) {
     const cell = document.createElement('div');
     cell.className = 'calendar-day other-month';
