@@ -45,7 +45,9 @@
         </div>
         
     </nav>
-<img src="./image assets/PokeBall.png" alt="">
+<!-- <img src="./image assets/PokeBall.png" alt=""> -->
+ <!-- <img src="./image assets/SmashBrothersIcon.png" alt=""> -->
+  <!-- <img src="./image assets/LogoIcon.png" alt=""> -->
 
     
 
@@ -307,6 +309,10 @@ function renderCalendar(events, month, year) {
 
   // 3) Fill in **this** month, with events
   // if date is 1 and it is less than or equal to days in month which is 31 we will create a cell which is an empy div and give it a class of this month calendar-day. And then we give an innerhtml of day number and insert the date which will serve as the day number. And then create something called an evlist and set that to an empty div then give it a class called events. And then we will make a datestring called dateStr and we'll slice it down to a YYYY-MM-DD format we then take the given events param and filter it down with an ev token and if the start.dateTime matches the dateStr we will create an item that is an empty div, give that item a calss of event, make the inner html the event title and append it into the event list for that day and we'll increment until we're done. After we've done that we'll put the evlist in the 
+    const pokeIcon = './image assets/PokeBall.png'
+    const smashIcon = './image assets/SmashBrothersIcon.png'
+    const logoIcon = './image assets/LogoIcon.png'
+
   for (let date = 1; date <= daysInMonth; date++) {
     const cell = document.createElement('div');
     cell.className = 'calendar-day this-month';
@@ -318,25 +324,37 @@ function renderCalendar(events, month, year) {
     const evList = document.createElement('div');
     evList.className = 'events';
 
-    const myImg = './image assets/PokeBall.png'
+
 
     // c) Attach any events that match this date
     const dateStr = new Date(year, month, date).toISOString().slice(0,10); // “YYYY-MM-DD”
     events.filter(ev => (ev.start.dateTime||ev.start.date).slice(0,10) === dateStr).forEach(ev => {
         const item = document.createElement('div');
-        const img = document.createElement('img');
+        const title = ev.summary;
+        const icon = document.createElement('img');
+
+        if ( title.includes('Smash') ){
+            icon.src = smashIcon;
+        } else if ( title.includes('Pokemon')) {
+          icon.src = pokeIcon
+        } else {
+          icon.src = logoIcon
+        };
+        
+        // const tooltipMessage = createElement('span')
         // item.innerText = ev.summary;
-        img.src = myImg;
-        img.className = 'calendar-icon tooltip tooltiptext';
-        item.appendChild(img);
+        icon.className = 'calendar-icon tooltip';
+        item.appendChild(icon);
         item.className = 'event';
+
         evList.appendChild(item);
-        // evList.appendChild(img);
+    
       });
 
     cell.appendChild(evList);
     grid.appendChild(cell);
   }
+
 
   // 4) Fill in head of next month so last week is full
   const totalCells = firstDay + daysInMonth;
