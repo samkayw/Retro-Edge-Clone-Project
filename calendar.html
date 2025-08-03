@@ -48,6 +48,7 @@
 <!-- <img src="./image assets/PokeBall.png" alt=""> -->
  <!-- <img src="./image assets/SmashBrothersIcon.png" alt=""> -->
   <!-- <img src="./image assets/LogoIcon.png" alt=""> -->
+   <img src="./image assets/GuiltyGearIcon.png" alt="">
 
     
 
@@ -312,6 +313,8 @@ function renderCalendar(events, month, year) {
     const pokeIcon = './image assets/PokeBall.png'
     const smashIcon = './image assets/SmashBrothersIcon.png'
     const logoIcon = './image assets/LogoIcon.png'
+    const ggIcon = '/image assets/GuiltyGearIcon.png'
+    const sfIcon = '/image assets/SFLogo.png'
 
   for (let date = 1; date <= daysInMonth; date++) {
     const cell = document.createElement('div');
@@ -337,6 +340,10 @@ function renderCalendar(events, month, year) {
             icon.src = smashIcon;
         } else if ( title.includes('Pokemon')) {
           icon.src = pokeIcon
+        } else if (title.includes('Guilty')){
+          icon.src = ggIcon;
+        } else if (title.includes('Street')) {
+          icon.src = sfIcon
         } else {
           icon.src = logoIcon
         };
