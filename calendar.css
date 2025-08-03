@@ -66,8 +66,13 @@
 }
 
 .event {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
   width: 80%;
-  height: auto;
+  height: fit-content;
 }
 
 .other-month {
@@ -84,39 +89,49 @@
 .calendar-icon {
     width: 75%;
     height: auto;
+    
 }
 
 
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
+  /* border-bottom: 1px dotted black; */
 }
 
 .tooltip .tooltiptext {
+  /* apparently inline block is when max width applies */
+  display: inline-block;
+  max-width: 150px;
+  width: max-content;
+  white-space: normal;
+  overflow-wrap: break-word;
+
+
   visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
+  /* width: auto;
+  white-space: wrap; */
+  background-color: var(--white);
+  color: black;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 5px 0px;
   position: absolute;
   z-index: 1;
-  bottom: 150%;
+  bottom: 120%;
   left: 50%;
-  margin-left: -60px;
+  transform: translateX(-50%);
 }
 
 .tooltip .tooltiptext::after {
-  content: "Yup";
+  content: "";
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-left: -5px;
+  margin-left: -8%;
   border-width: 5px;
   border-style: solid;
-  border-color: black transparent transparent transparent;
+  border-color: white transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {

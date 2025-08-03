@@ -66,6 +66,10 @@
     <h1>MONTHLY CALENDAR</h1>
      <header id="calendar-header"></header>
      <div id="calendar-grid" class="calendar-grid"></div>
+
+     <p class="tooltip">American Dog
+      <span class="tooltiptext">Erpy Walker</span>
+     </p>
 </section>
 <!-- SURFACE -->
 
@@ -310,6 +314,8 @@ function renderCalendar(events, month, year) {
 
   // 3) Fill in **this** month, with events
   // if date is 1 and it is less than or equal to days in month which is 31 we will create a cell which is an empy div and give it a class of this month calendar-day. And then we give an innerhtml of day number and insert the date which will serve as the day number. And then create something called an evlist and set that to an empty div then give it a class called events. And then we will make a datestring called dateStr and we'll slice it down to a YYYY-MM-DD format we then take the given events param and filter it down with an ev token and if the start.dateTime matches the dateStr we will create an item that is an empty div, give that item a calss of event, make the inner html the event title and append it into the event list for that day and we'll increment until we're done. After we've done that we'll put the evlist in the 
+
+
     const pokeIcon = './image assets/PokeBall.png'
     const smashIcon = './image assets/SmashBrothersIcon.png'
     const logoIcon = './image assets/LogoIcon.png'
@@ -336,23 +342,44 @@ function renderCalendar(events, month, year) {
         const title = ev.summary;
         const icon = document.createElement('img');
 
+        //checks the event name and places the corresponding icon
         if ( title.includes('Smash') ){
             icon.src = smashIcon;
+            
+            
         } else if ( title.includes('Pokemon')) {
           icon.src = pokeIcon
+          
+          
         } else if (title.includes('Guilty')){
           icon.src = ggIcon;
+          
+          
         } else if (title.includes('Street')) {
           icon.src = sfIcon
+          
+          
         } else {
           icon.src = logoIcon
+          
+          
         };
-        
+        toolTipText = title;
+
         // const tooltipMessage = createElement('span')
         // item.innerText = ev.summary;
-        icon.className = 'calendar-icon tooltip';
+        icon.className = 'calendar-icon';
         item.appendChild(icon);
-        item.className = 'event';
+        item.className = 'tooltip event';
+
+        // create the tool tip
+        const tip = document.createElement('span');
+        //give it our class
+        tip.className = 'tooltiptext';
+        //make the workds be the title
+        tip.textContent = title;
+        //add it to item as a chile so that it will activate on hover
+        item.appendChild(tip);         
 
         evList.appendChild(item);
     
