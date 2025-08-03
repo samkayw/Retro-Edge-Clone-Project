@@ -58,16 +58,16 @@
 }
 
 .events {
-  /* display: flex;
-  flex-direction: row; */
-  /* overflow-x: auto; */
-  /* flex: 5;
-  overflow-y: auto; */
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+  gap: 0px;
   
 }
 
 .event {
-  /* width: fit-content; */
+  width: 80%;
+  height: auto;
 }
 
 .other-month {
@@ -82,8 +82,8 @@
 }
 
 .calendar-icon {
-    width: 25%;
-    height: 25%;
+    width: 75%;
+    height: auto;
 }
 
 
