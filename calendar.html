@@ -240,7 +240,7 @@
 // API Calls List
         // once thats done, put it in here
           response = await gapi.client.calendar.events.list(request);
-          console.log(response)
+          
         //if something doesn't work, throw this error
         } catch (err) {
           document.getElementById('content').innerText = err.message;
@@ -259,6 +259,7 @@
         }
       } 
         console.clear()
+        
 
 
 
@@ -270,9 +271,6 @@ function renderCalendar(events, month, year) {
   ];
 
   const weekdayLength = weekdayNames.length;
-  console.log(weekdayLength)
-  console.log(weekdayNames)
-
 
   const monthNames = [
     'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
@@ -290,14 +288,12 @@ function renderCalendar(events, month, year) {
     const weekName = document.createElement('div')
     weekName.className = 'calendar-row-header';
     weekName.innerHTML = `<div>${weekdayNames[i]}</div>`;
-    console.log(weekName)
     grid.append(weekName);
   };
 
 
   // 1) Compute first weekday & month lengths
   const firstDay   = new Date(year, month, 1).getDay();       // 0=Sun…6=Sat on this day is Tuesday
-  console.log(`firstDay = ${firstDay}`)
   const daysInMonth= new Date(year, month+1, 0).getDate();    // e.g. 31 days of the current month and +1 because we init from index 0
   const daysInPrev = new Date(year, month,   0).getDate();    // e.g. 30 for June 
 
@@ -338,9 +334,28 @@ function renderCalendar(events, month, year) {
     // c) Attach any events that match this date
     const dateStr = new Date(year, month, date).toISOString().slice(0,10); // “YYYY-MM-DD”
     events.filter(ev => (ev.start.dateTime||ev.start.date).slice(0,10) === dateStr).forEach(ev => {
+        
         const item = document.createElement('div');
         const title = ev.summary;
         const icon = document.createElement('img');
+
+        let eventStartTime;
+        let eventEndTime;
+
+        if (ev.start.dateTime) {
+            const dst = new Date(ev.start.dateTime);
+            eventStartTime = dst.toLocaleTimeString(["en-us"], {hour:'numeric', minute:'2-digit'});
+
+            const dnt = new Date(ev.end.dateTime);
+            eventEndTime = dnt.toLocaleTimeString(["en-us"], {hour:'numeric', minute:'2-digit'});
+
+            // console.log(ev.end.dateTime)
+            // console.log(ev.start.dateTime)
+        } else {
+          eventStartTime = 'Inquire In Store'
+          eventEndTime = ''
+        }
+
 
         //checks the event name and places the corresponding icon
         if ( title.includes('Smash') ){
@@ -364,7 +379,9 @@ function renderCalendar(events, month, year) {
           
           
         };
+        
         toolTipText = title;
+        // eventTime.className = 'start-time'
 
         // const tooltipMessage = createElement('span')
         // item.innerText = ev.summary;
@@ -372,16 +389,17 @@ function renderCalendar(events, month, year) {
         item.appendChild(icon);
         item.className = 'tooltip event';
 
-        // create the tool tip
-        const tip = document.createElement('span');
+        //create the tool tip
         //give it our class
-        tip.className = 'tooltiptext';
-        //make the workds be the title
-        tip.textContent = title;
+        //make the words be the title
         //add it to item as a chile so that it will activate on hover
-        item.appendChild(tip);         
-
+        const tip = document.createElement('span');
+        tip.className = 'tooltiptext';
+        tip.textContent = `${title}\nFrom: ${eventStartTime}-${eventEndTime}`;
+        item.appendChild(tip);
         evList.appendChild(item);
+        
+
     
       });
 
