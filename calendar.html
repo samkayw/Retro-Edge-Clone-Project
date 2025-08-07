@@ -352,7 +352,7 @@ function renderCalendar(events, month, year) {
             // console.log(ev.end.dateTime)
             // console.log(ev.start.dateTime)
         } else {
-          eventStartTime = 'Inquire In Store'
+          eventStartTime = 'All Day'
           eventEndTime = ''
         }
 
@@ -395,7 +395,8 @@ function renderCalendar(events, month, year) {
         //add it to item as a chile so that it will activate on hover
         const tip = document.createElement('span');
         tip.className = 'tooltiptext';
-        tip.textContent = `${title}\nFrom: ${eventStartTime}-${eventEndTime}`;
+        tip.textContent = `${title}\nFrom: ${eventStartTime}${eventEndTime}`;
+
         item.appendChild(tip);
         evList.appendChild(item);
         
