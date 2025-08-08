@@ -267,7 +267,7 @@ function renderCalendar(events, month, year) {
             tip.className = 'tooltiptext';
         
             //create the header text and add it to the tool tip
-            const titleLine = document.createElement('h4')
+            const titleLine = document.createElement('strong')
             titleLine.className = 'event-title'
             titleLine.textContent = title;
             tip.appendChild(titleLine)
@@ -309,9 +309,9 @@ function renderCalendar(events, month, year) {
     }
     
     // for each icon in the calendar, make it so that it is clickable
-    const calendarIcons = document.querySelectorAll('.calendar-icon')
-    const eventTimes = document.querySelectorAll('#event-times')
-    const eventTitle = document.querySelectorAll('#event-title')
+    const calendarIcons = document.querySelectorAll('.event')
+    
+    // const eventTitle = document.querySelectorAll('#event-title')
 
     // calendarIcons.addEventListener('click', eventInfo)
     calendarIcons.forEach(i =>
@@ -319,14 +319,23 @@ function renderCalendar(events, month, year) {
     )
 
     //console.log(calendarIcons)
-    function eventInfo(event) {
+    function eventInfo(e) {
         //console.log(eventTitle.curre)
-        let text = event.currentTarget;
-        console.log(text)
-        
-
+        //apprantly you can add another query selector in a query selector if you gap it
+        const eventTitle = e.currentTarget.querySelector('.event-title').innerText;
+        const eventTimes = e.currentTarget.querySelector('#event-times').innerText;
+        console.log(eventTitle)
+        console.log(eventTimes)
         
     }
+
+//     document.querySelectorAll('.event').forEach(card => {
+//         card.addEventListener('click', (e) => {
+//             const titleEl = e.currentTarget.querySelector('.event-title');
+//             const timesEl = e.currentTarget.querySelector('.event-times'); // use class, not id
+//             console.log(titleEl?.textContent.trim(), timesEl?.textContent.trim());
+//   });
+// });
 
 
 }
