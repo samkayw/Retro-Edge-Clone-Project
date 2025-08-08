@@ -92,7 +92,7 @@
     
 }
 
-
+/* Tool tip styles */
 .tooltip {
   position: relative;
   display: inline-block;
@@ -143,3 +143,11 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+/* event time */
+#event-times {
+  color: black;
+  font-weight: lighter;
+  font-size: 16px;
+}
+ 

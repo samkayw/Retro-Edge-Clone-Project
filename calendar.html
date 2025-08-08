@@ -347,7 +347,7 @@ function renderCalendar(events, month, year) {
             eventStartTime = dst.toLocaleTimeString(["en-us"], {hour:'numeric', minute:'2-digit'});
 
             const dnt = new Date(ev.end.dateTime);
-            eventEndTime = dnt.toLocaleTimeString(["en-us"], {hour:'numeric', minute:'2-digit'});
+            eventEndTime = `- ${dnt.toLocaleTimeString(["en-us"], {hour:'numeric', minute:'2-digit'})}`
 
             // console.log(ev.end.dateTime)
             // console.log(ev.start.dateTime)
@@ -379,25 +379,28 @@ function renderCalendar(events, month, year) {
           
           
         };
-        
-        toolTipText = title;
-        // eventTime.className = 'start-time'
-
-        // const tooltipMessage = createElement('span')
-        // item.innerText = ev.summary;
-        icon.className = 'calendar-icon';
-        item.appendChild(icon);
-        item.className = 'tooltip event';
 
         //create the tool tip
-        //give it our class
-        //make the words be the title
-        //add it to item as a chile so that it will activate on hover
         const tip = document.createElement('span');
         tip.className = 'tooltiptext';
-        tip.textContent = `${title}\nFrom: ${eventStartTime}${eventEndTime}`;
+        
+        //create the header text and add it to the tool tip
+        const titleLine = document.createElement('h4')
+        titleLine.textContent = title;
+        tip.appendChild(titleLine)
 
-        item.appendChild(tip);
+        //create the event times and add it to the tooltip
+        const times = document.createElement('p')
+        times.id = 'event-times'
+        times.textContent =  `${eventStartTime} ${eventEndTime}`
+        tip.appendChild(times)
+
+        //give a class to the icon
+        icon.className = 'calendar-icon';
+
+        item.appendChild(tip)
+        item.appendChild(icon);
+        item.className = 'tooltip event';
         evList.appendChild(item);
         
 
