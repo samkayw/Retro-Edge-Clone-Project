@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelector(".navLinks");
     const bars = document.querySelectorAll('.bar')
 
+    console.log(bars)
+
 
     // checks the html tag for navLinks and add or removes active from the class 
     function toggleHamburger() {
@@ -21,11 +23,3 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener('click', toggleHamburger)
     window.addEventListener('scroll', onScroll);
 });
-
-let i = 0;
-
-do {
-    console.log(i);
-    i++
-}
-while (i < 10);
