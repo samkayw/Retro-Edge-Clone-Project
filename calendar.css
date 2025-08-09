@@ -106,6 +106,7 @@
   width: max-content;
   white-space: normal;
   overflow-wrap: break-word;
+  /* height: 60px; */
 
 
   visibility: hidden;
@@ -125,16 +126,21 @@
   position: absolute;
   z-index: 1;
   bottom: 120%;
-  left: 50%;
+  left: 45%;
   transform: translateX(-50%);
+
+  /* animation */
+  /* transition: width 2s;
+  transition: height .5s; */
+
 }
 
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
-  margin-left: -8%;
+  left: 45%;
+  margin-left: 0%;
   border-width: 5px;
   border-style: solid;
   border-color: white transparent transparent transparent;
@@ -142,6 +148,12 @@
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.tooltip .tooltiptext.expand {
+  height: 200px;
+  max-width: 500px;
+  width: 500%;
 }
 
 /* event time */

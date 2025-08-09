@@ -310,6 +310,8 @@ function renderCalendar(events, month, year) {
     
     // for each icon in the calendar, make it so that it is clickable
     const calendarIcons = document.querySelectorAll('.event')
+    const tTip = document.querySelectorAll('.tooltiptext')
+    console.log(tTip)
     
     // const eventTitle = document.querySelectorAll('#event-title')
 
@@ -318,15 +320,32 @@ function renderCalendar(events, month, year) {
         i.addEventListener('click', eventInfo)
     )
 
+    calendarIcons.forEach(t =>
+        t.addEventListener('click', toggleToolTip)
+    )
+
+    calendarIcons.forEach(t =>
+        t.addEventListener('mouseout', closeMenu)
+    )
+
     //console.log(calendarIcons)
     function eventInfo(e) {
         //console.log(eventTitle.curre)
         //apprantly you can add another query selector in a query selector if you gap it
         const eventTitle = e.currentTarget.querySelector('.event-title').innerText;
         const eventTimes = e.currentTarget.querySelector('#event-times').innerText;
+        // const eventDesc = 
+        
         console.log(eventTitle)
         console.log(eventTimes)
-        
+    }
+
+    function toggleToolTip() {
+        tTip.forEach(t => t.classList.toggle('expand'))
+    } 
+
+    function closeMenu() {
+        tTip.forEach(t => t.classList.remove('expand'))
     }
 
 //     document.querySelectorAll('.event').forEach(card => {
