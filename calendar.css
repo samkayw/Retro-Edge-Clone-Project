@@ -92,6 +92,13 @@
     
 }
 
+.calendar-icon:hover {
+    border: 5px solid var(--neon-green) ;
+    border-radius: 100px;
+    /* opacity: .8; */
+    cursor: pointer;
+}
+
 /* Tool tip styles */
 .tooltip {
   position: relative;
