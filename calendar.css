@@ -130,8 +130,8 @@
   transform: translateX(-50%);
 
   /* animation */
-  /* transition: width 2s;
-  transition: height .5s; */
+  /* transition: max-width 2s;
+  transition: height 1s; */
 
 }
 
@@ -154,6 +154,8 @@
   height: 200px;
   max-width: 500px;
   width: 500%;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* event time */

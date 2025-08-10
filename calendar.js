@@ -307,57 +307,46 @@ function renderCalendar(events, month, year) {
         cell.innerHTML = `<div class="day-number">${d}</div>`;
         grid.appendChild(cell);
     }
-    
-    // for each icon in the calendar, make it so that it is clickable
-    const calendarIcons = document.querySelectorAll('.event')
-    const tTip = document.querySelectorAll('.tooltiptext')
-    console.log(tTip)
-    
-    // const eventTitle = document.querySelectorAll('#event-title')
 
-    // calendarIcons.addEventListener('click', eventInfo)
-    calendarIcons.forEach(i =>
-        i.addEventListener('click', eventInfo)
-    )
 
-    calendarIcons.forEach(t =>
-        t.addEventListener('click', toggleToolTip)
-    )
+    //gets the whole calendar
+    const cGrid = document.getElementById('calendar-grid')
 
-    calendarIcons.forEach(t =>
-        t.addEventListener('mouseout', closeMenu)
-    )
+    //listen in on the calendar
+    cGrid.addEventListener('click', expandToolTip)
 
-    //console.log(calendarIcons)
-    function eventInfo(e) {
-        //console.log(eventTitle.curre)
-        //apprantly you can add another query selector in a query selector if you gap it
-        const eventTitle = e.currentTarget.querySelector('.event-title').innerText;
-        const eventTimes = e.currentTarget.querySelector('#event-times').innerText;
-        // const eventDesc = 
+
+    //toggle the classes 
+    function expandToolTip(e) {
+        // grabs the closest calendar icon
+        const icon = e.target.closest('.calendar-icon') //get the icon I clicked
+        if (!icon) return;
         
-        console.log(eventTitle)
-        console.log(eventTimes)
+        const card = icon.closest('.event');          //find the icon's event ifo
+        const tip = card.querySelector('.tooltiptext'); //get the event info's tooltip
+        if (!tip) return;
+
+        const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand') //gather up any open tool tip
+        eventMenu.forEach(t => t.classList.remove('expand')); //close them before you open the next
+        tip.classList.toggle('expand'); //toggle it
+
+
     }
 
-    function toggleToolTip() {
-        tTip.forEach(t => t.classList.toggle('expand'))
-    } 
+    
+    document.addEventListener('click', function (e) {
+        
+        if (e.target.className !== 'calendar-icon') {
+            // closes it if anything other than an icon is clicked
+            const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand')
+            eventMenu.forEach(t => t.classList.remove('expand'));
+            
+            
 
-    function closeMenu() {
-        tTip.forEach(t => t.classList.remove('expand'))
+        } 
+    
     }
-
-//     document.querySelectorAll('.event').forEach(card => {
-//         card.addEventListener('click', (e) => {
-//             const titleEl = e.currentTarget.querySelector('.event-title');
-//             const timesEl = e.currentTarget.querySelector('.event-times'); // use class, not id
-//             console.log(titleEl?.textContent.trim(), timesEl?.textContent.trim());
-//   });
-// });
-
-
-}
+)}
 
 
 
