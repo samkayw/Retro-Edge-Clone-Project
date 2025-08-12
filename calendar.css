@@ -93,7 +93,7 @@
 }
 
 .calendar-icon:hover {
-    border: 5px solid var(--neon-green) ;
+    border: 3px solid var(--neon-green) ;
     border-radius: 100px;
     /* opacity: .8; */
     cursor: pointer;
@@ -183,6 +183,14 @@
 
   #calendar-header {
     width: 90vw;
+  }
+
+  .calendar-day {
+    min-height: 7vh;
+  }
+
+  .calendar-icon {
+    display: none;
   }
 
 
