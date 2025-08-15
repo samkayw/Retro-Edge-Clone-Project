@@ -229,6 +229,8 @@ function renderCalendar(events, month, year) {
             const item = document.createElement('div');
             const title = ev.summary;
             const icon = document.createElement('img');
+            
+            console.log(ev.description)
 
             // Start and end times
             let eventStartTime;
