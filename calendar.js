@@ -340,7 +340,6 @@ function renderCalendar(events, month, year) {
         if (!tip) return;
         // const isOpen = true
 
-
         //checks if other tooltips are open other than the one we have open right now
         const openTips = cGrid.querySelectorAll('.tooltiptext.expand');
         openTips.forEach(t => {
@@ -349,18 +348,17 @@ function renderCalendar(events, month, year) {
 
         //get the closest event description and then display it
         const eventDesc = tip.querySelector('.event-desc')
-        eventDesc.classList.toggle('show-desc')
-
+        //close it if you click on another icon
+        const openDescs = cGrid.querySelectorAll('.event-desc.show-desc');
+        openDescs.forEach(t => {
+            if (t !== eventDesc) t.classList.remove('show-desc')
+        })
         
-
-        // const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand') //gather up any open tool tip
-        // eventMenu.forEach(t => t.classList.toggle('expand')); //close them before you open the next
-
-
+        //toggle it on and off
+        eventDesc.classList.toggle('show-desc')
         tip.classList.toggle('expand'); //toggle it
-
-
     }
+    
 
     //close icon if you click outside of the icon
     document.addEventListener('click', function (e) {
@@ -376,6 +374,8 @@ function renderCalendar(events, month, year) {
         }
     
     })
+
+
 
     // const eventDescription = document.querySelectorAll('.event-desc')
 
