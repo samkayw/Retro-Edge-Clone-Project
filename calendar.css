@@ -158,11 +158,14 @@
 }
 
 .tooltip .tooltiptext.expand {
-  height: 200px;
+  height: fit-content;
   max-width: 500px;
   width: 500%;
   visibility: visible;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
 }
 
@@ -182,9 +185,27 @@
   text-align: justify;
 }
 
+.tooltip-button {
+  display: none;
+  background-color: none;
+  color: var(--royal-king-purple);
+  border: 2px solid var(--royal-king-purple);
+  font-size: smaller;
+  border-radius: 10px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.tooltip-button:hover {
+  text-decoration: underline;
+  border: 3px solid var(--N64-plastic);
+  cursor: pointer;
+  
+}
+
 .show-desc {
   display: block;
-  
 }
 
  /* ################################################################################################# */

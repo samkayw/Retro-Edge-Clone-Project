@@ -230,7 +230,7 @@ function renderCalendar(events, month, year) {
             const title = ev.summary;
             const icon = document.createElement('img');
             const eDesc = ev.description;
-            console.log(eDesc)
+            const btn = document.createElement('button')
 
             // Start and end times
             let eventStartTime;
@@ -290,6 +290,12 @@ function renderCalendar(events, month, year) {
             descBlock.innerHTML = eDesc;
             tip.appendChild(descBlock)
 
+            //add a button to the tool tip
+            btn.innerText = 'Add To My Calendar'
+            btn.className = 'tooltip-button'
+            btn.id = 'tool-tip-btn'
+            tip.appendChild(btn)
+
             //give a class to the icon for style
             icon.className = 'calendar-icon';
         
@@ -298,8 +304,6 @@ function renderCalendar(events, month, year) {
             item.appendChild(icon);
             item.className = 'tooltip event';
             evList.appendChild(item);
-
-
 
         });
 
@@ -354,11 +358,18 @@ function renderCalendar(events, month, year) {
             if (t !== eventDesc) t.classList.remove('show-desc')
         })
         
+        const eventBtn = tip.querySelector('.tooltip-button')
+        const openBtns = cGrid.querySelectorAll('.tooltip-button.show-desc');
+        openBtns.forEach(t => {
+            if (t !== eventBtn) t.classList.remove('show-desc')
+        })
+        
         //toggle it on and off
+        eventBtn.classList.toggle('show-desc')
         eventDesc.classList.toggle('show-desc')
         tip.classList.toggle('expand'); //toggle it
     }
-    
+
 
     //close icon if you click outside of the icon
     document.addEventListener('click', function (e) {
@@ -370,6 +381,10 @@ function renderCalendar(events, month, year) {
             //remove other event descriptions
             const eventDesc = cGrid.querySelectorAll('.event-desc.show-desc')
             eventDesc.forEach(t => t.classList.remove('show-desc'))
+
+            //remove other buttons
+            const eventBtn = cGrid.querySelectorAll('.tooltip-button.show-desc')
+            eventBtn.forEach(t => t.classList.remove('show-desc'))
             
         }
     
