@@ -42,11 +42,13 @@ nav {
 .desktop-nav a:active {
     color: var(--neon-green);
     text-decoration: underline;
+    text-underline-offset: 7px;
 }
 
 #selected {
     color: var(--neon-green);
     text-decoration: underline;
+    text-underline-offset: 7px;
 }
 
 /* ########################################################################################################################################

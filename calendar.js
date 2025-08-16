@@ -229,8 +229,8 @@ function renderCalendar(events, month, year) {
             const item = document.createElement('div');
             const title = ev.summary;
             const icon = document.createElement('img');
-            
-            console.log(ev.description)
+            const eDesc = ev.description;
+            console.log(eDesc)
 
             // Start and end times
             let eventStartTime;
@@ -281,6 +281,14 @@ function renderCalendar(events, month, year) {
             times.id = 'event-times'
             times.textContent = `${eventStartTime} ${eventEndTime}`
             tip.appendChild(times)
+
+            // create event description and put it in the tool tip
+            const descBlock = document.createElement('h5')
+            descBlock.className = 'event-desc'
+            //flag security issue for XSS attacks and a solution for this
+            //look into dom purify and white listing allowable tags
+            descBlock.innerHTML = eDesc;
+            tip.appendChild(descBlock)
 
             //give a class to the icon for style
             icon.className = 'calendar-icon';
@@ -339,6 +347,12 @@ function renderCalendar(events, month, year) {
             if (t !== tip) t.classList.remove('expand');
         });
 
+        //get the closest event description and then display it
+        const eventDesc = tip.querySelector('.event-desc')
+        eventDesc.classList.toggle('show-desc')
+
+        
+
         // const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand') //gather up any open tool tip
         // eventMenu.forEach(t => t.classList.toggle('expand')); //close them before you open the next
 
@@ -348,16 +362,24 @@ function renderCalendar(events, month, year) {
 
     }
 
-    //
+    //close icon if you click outside of the icon
     document.addEventListener('click', function (e) {
         if (e.target.className !== 'calendar-icon') {
             // closes it if anything other than an icon is clicked
             const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand')
             eventMenu.forEach(t => t.classList.remove('expand'));
+
+            //remove other event descriptions
+            const eventDesc = cGrid.querySelectorAll('.event-desc.show-desc')
+            eventDesc.forEach(t => t.classList.remove('show-desc'))
             
         }
     
     })
+
+    // const eventDescription = document.querySelectorAll('.event-desc')
+
+    // eventDescription.addEventListener(click)
 
         
       
