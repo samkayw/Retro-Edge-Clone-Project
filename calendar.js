@@ -373,7 +373,11 @@ function renderCalendar(events, month, year) {
 
     //close icon if you click outside of the icon
     document.addEventListener('click', function (e) {
-        if (e.target.className !== 'calendar-icon') {
+
+        const userClick = e.target.className
+        console.log(userClick)
+
+        if (userClick !== 'calendar-icon' && userClick !== 'tooltip-button show-desc' ) {
             // closes it if anything other than an icon is clicked
             const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand')
             eventMenu.forEach(t => t.classList.remove('expand'));
