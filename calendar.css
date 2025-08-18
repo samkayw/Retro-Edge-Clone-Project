@@ -138,8 +138,11 @@
   transform: translateX(-50%);
 
   /* animation */
-  /* transition: max-width 2s;
-  transition: height 1s; */
+
+  /*   
+  transition: max-width 2s; 
+  transition: height 1s;  
+  */
 
 }
 
@@ -182,7 +185,7 @@
   display: none;
   color: black;
   font-weight: lighter;
-  font-size: 12px;
+  font-size: 14px;
   text-align: justify;
 }
 
