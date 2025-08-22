@@ -119,15 +119,29 @@
         let response;
         //try to get a list of these items
         try {
-// API Calls List
-          const request = {
-            'calendarId': PUBLIC_CAL_ID,
-            'timeMin': (new Date()).toISOString(),
-            'showDeleted': false,
-            'singleEvents': true,
-            'maxResults': 100,
-            'orderBy': 'startTime',
-          };
+            // API Calls List
+            
+
+                // derive month/year here
+            const now   = new Date();
+            const year  = now.getFullYear();
+            const month = now.getMonth(); // 0 = Jan
+          //get the start and end parameters for the time frame  
+            const startOfMonth = new Date(year, month, 1).toISOString();
+            const endOfMonth = new Date(year, month + 1, 0, 23, 59, 59).toISOString();
+            
+            const request = {
+                'calendarId': PUBLIC_CAL_ID,
+                //timeMin is filtering for dates that don't start today  
+                //'timeMin': (new Date()).toISOString(),
+                'timeMin': startOfMonth,
+                'timeMax': endOfMonth,
+                'showDeleted': false,
+                'singleEvents': true,
+                'maxResults': 250,
+                'orderBy': 'startTime',
+            };
+            
 // API Calls List
         // once thats done, put it in here
           response = await gapi.client.calendar.events.list(request);
@@ -175,7 +189,7 @@ function renderCalendar(events, month, year) {
 
   
     //insert days of the week headers
-    for (i = 0; weekdayLength > i; i++) {
+    for (let i = 0; weekdayLength > i; i++) {
         const weekName = document.createElement('div')
         weekName.className = 'calendar-row-header';
         weekName.innerHTML = `<div>${weekdayNames[i]}</div>`;
@@ -201,8 +215,6 @@ function renderCalendar(events, month, year) {
 
     // 3) Fill in **this** month, with events
     // if date is 1 and it is less than or equal to days in month which is 31 we will create a cell which is an empy div and give it a class of this month calendar-day. And then we give an innerhtml of day number and insert the date which will serve as the day number. And then create something called an evlist and set that to an empty div then give it a class called events. And then we will make a datestring called dateStr and we'll slice it down to a YYYY-MM-DD format we then take the given events param and filter it down with an ev token and if the start.dateTime matches the dateStr we will create an item that is an empty div, give that item a calss of event, make the inner html the event title and append it into the event list for that day and we'll increment until we're done. After we've done that we'll put the evlist in the 
-
-
     const pokeIcon = './image assets/PokeBall.png'
     const smashIcon = './image assets/SmashBrothersIcon.png'
     const logoIcon = './image assets/LogoIcon.png'
