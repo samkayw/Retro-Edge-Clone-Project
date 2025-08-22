@@ -23,7 +23,7 @@
     //   let gisInited = false;
 
     //   document.getElementById('authorize_button').style.visibility = 'hidden';
-    //   document.getElementById('signout_button').style.visibility = 'hidden';
+//   document.getElementById('signout_button').style.visibility = 'hidden';
 
       /**
        * Callback after api.js is loaded.
@@ -229,8 +229,8 @@ function renderCalendar(events, month, year) {
             const item = document.createElement('div');
             const title = ev.summary;
             const icon = document.createElement('img');
+            const btn = document.createElement('a')
             const eDesc = ev.description;
-            const btn = document.createElement('button')
 
             // Start and end times
             let eventStartTime;
@@ -294,6 +294,7 @@ function renderCalendar(events, month, year) {
             btn.innerText = 'Add To My Calendar'
             btn.className = 'tooltip-button'
             btn.id = 'tool-tip-btn'
+            btn.href = 'https://calendar.google.com/calendar/ical/3cae1ba52ac23bca99893a1b81869bf4fd06aae62a79f167b7ac76510d26c045%40group.calendar.google.com/public/basic.ics'
             tip.appendChild(btn)
 
             //give a class to the icon for style
@@ -393,14 +394,7 @@ function renderCalendar(events, month, year) {
         }
     
     })
-
-
-
-    // const eventDescription = document.querySelectorAll('.event-desc')
-
-    // eventDescription.addEventListener(click)
-
-        
+     
       
 }
 
