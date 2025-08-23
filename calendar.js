@@ -1,3 +1,4 @@
+
 // 300093958729-8g1fr9o7catq7jtgh26gd6293d0n6qfh.apps.googleusercontent.com
 // AIzaSyACeAr4hZMJ9axLPEMzLPZgQr8XkYAZl1k
 
@@ -408,6 +409,58 @@ function renderCalendar(events, month, year) {
     })
      
       
+}
+
+//creates the hook for our button
+//listen for the when the user clicks the button 
+const dlBtn = document.getElementById('download-png');
+dlBtn.addEventListener('click', saveCalendarImage);
+
+//listener function
+async function saveCalendarImage() {
+  const target = document.getElementById('calendar-capture'); //grabs the hmtl2canvas listener div
+
+  //make sure fonts/images are ready so the snapshot looks right
+  if (document.fonts && document.fonts.ready) {
+      try {
+          await document.fonts.ready;
+
+      } catch { 
+          
+      }
+  }
+
+  //the actual screenshot
+  const canvas = await html2canvas(target, {
+    backgroundColor: '#000000ff',
+    scale: Math.min(3, window.devicePixelRatio * 2), // sharper PNG, cap scale
+    useCORS: true, // needed if any images are from another origin
+    logging: false
+  });
+
+  // download as PNG (with fallback for older Safari)
+  if (canvas.toBlob) {
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const stamp = new Date().toISOString().slice(0,10);
+      a.href = url;
+      a.download = `calendar-${stamp}.png`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }, 'image/png');
+      
+  } else {
+    // fallback
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = `calendar.png`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
 }
 
 
