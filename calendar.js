@@ -430,18 +430,18 @@ async function saveCalendarImage() {
       }
   }
 
-  //the actual screenshot
+  //setting some quality controls from the html2canvas library
   const canvas = await html2canvas(target, {
     backgroundColor: '#000000ff',
-    scale: Math.min(3, window.devicePixelRatio * 2), // sharper PNG, cap scale
-    useCORS: true, // needed if any images are from another origin
-    logging: false
+    scale: Math.min(3, window.devicePixelRatio * 2), //sharper PNG, cap scale
+    useCORS: true,
+    logging: false, //keep info out of the console
   });
 
-  // download as PNG (with fallback for older Safari)
+  //download as PNG (with fallback for older Safari)
   if (canvas.toBlob) {
     canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(blob); //using the URL api and its property to create a url with the blob data
       const a = document.createElement('a');
       const stamp = new Date().toISOString().slice(0,10);
       a.href = url;

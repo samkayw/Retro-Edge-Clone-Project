@@ -229,6 +229,7 @@
 }
 
 #download-png {
+  color: var(--neon-green);
   cursor: pointer;
   text-decoration: underline;
   font-weight: lighter;

@@ -1,5 +1,9 @@
 // // practice
 
+// const { default: html2canvas } = require("html2canvas")
+
+// const { default: html2canvas } = require("html2canvas");
+
 
 // const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
 // const days = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
@@ -115,23 +119,57 @@
 
 // document.getElementById('demo2').innerHTML = text;
 
-const items = new Set(["super potion", "lemonade", "fresh water"]);
-items.add("Master Ball")
-items.add("TM 192")
-items.add("Poke Flute")
-items.add("Master Ball")
-items.add("TM 192")
-items.add("Poke Flute")
+// const items = new Set(["super potion", "lemonade", "fresh water"]);
+// items.add("Master Ball")
+// items.add("TM 192")
+// items.add("Poke Flute")
+// items.add("Master Ball")
+// items.add("TM 192")
+// items.add("Poke Flute")
 
-const keyItem = "Arceus Flute"
+// const keyItem = "Arceus Flute"
 
-items.add(keyItem)
+// items.add(keyItem)
 
-let text = '';
+// let text = '';
 
-for (const item of items) {
-    text += item + "<br>";
-}
+// for (const item of items) {
+//     text += item + "<br>";
+// }
 
-console.log(items.has('Mas'))
-document.getElementById('demo').innerHTML = text;
+// // console.log(items.has('Mas'))
+// document.getElementById('demo').innerHTML = text;
+
+
+//get the button target so we can bind the html2canvas in the add a listener
+const download = document.getElementById('print-button')
+download.addEventListener('click', downloadScreen)
+
+//make the function 
+async function downloadScreen() {
+     //grab our print wrapper
+    const target = document.getElementById('print-target')
+
+    //skip fonts
+
+    //image params
+    const canvas = await html2canvas(target, {
+        backgroundColor: '#058374ff',
+        logging: false,
+    })
+
+    canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'gimmie some SIIIIIP'
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+        setTimeout(() => URL.revokeObjectURL(url), 1000)
+    }, 'image/png');
+
+
+ }
+
+
