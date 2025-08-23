@@ -162,7 +162,8 @@ async function downloadScreen() {
         const url = URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = url
-        a.download = 'gimmie some SIIIIIP'
+        a.download = 'gimmie some SIIIIIP' //if i don't do this then it wont download, itll just show the page
+        
         document.body.appendChild(a)
         a.click()
         a.remove()
