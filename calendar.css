@@ -214,6 +214,18 @@
   display: block;
 }
 
+#left-align-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 80vw;
+  margin-top: 1%;
+}
+
+#full-subscription {
+  color: var(--neon-green);
+}
+
  /* ################################################################################################# */
 
  @media screen and (max-width: 600px) {

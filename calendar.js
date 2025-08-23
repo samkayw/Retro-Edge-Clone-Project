@@ -306,7 +306,7 @@ function renderCalendar(events, month, year) {
             btn.innerText = 'Add To My Calendar'
             btn.className = 'tooltip-button'
             btn.id = 'tool-tip-btn'
-            btn.href = 'https://calendar.google.com/calendar/ical/3cae1ba52ac23bca99893a1b81869bf4fd06aae62a79f167b7ac76510d26c045%40group.calendar.google.com/public/basic.ics'
+            btn.href = ''
             tip.appendChild(btn)
 
             //give a class to the icon for style
