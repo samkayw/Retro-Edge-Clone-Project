@@ -219,8 +219,17 @@ function renderCalendar(events, month, year) {
     const pokeIcon = './image assets/PokeBall.png'
     const smashIcon = './image assets/SmashBrothersIcon.png'
     const logoIcon = './image assets/LogoIcon.png'
-    const ggIcon = '/image assets/GuiltyGearIcon.png'
+    const ggIcon = './image assets/GuiltyGearIcon.png'
     const sfIcon = '/image assets/SFLogo.png'
+    const fgcIcon = './image assets/FGC_Logo.png'
+    const mtgIcon = './image assets/MTG_Logo.png'
+    const tknIcon = './image assets/Tekken8Logo.png'
+    const lorcanaIcon = './image assets/lorcana_icon.png'
+    const dndIcon = './image assets/dnd_logo.png'
+    const gndmIcon = './image assets/gundam_logo.png'
+    const onepIcon = './image assets/onep_icon.png'
+
+
 
     for (let date = 1; date <= daysInMonth; date++) {
         const cell = document.createElement('div');
@@ -274,7 +283,29 @@ function renderCalendar(events, month, year) {
             } else if (title.includes('Street')) {
                 icon.src = sfIcon
           
-            } else {
+            } else if (title.includes('FGC')) {
+                icon.src = fgcIcon
+
+            } else if (title.includes('Magic')) {
+                icon.src = mtgIcon
+
+            } else if (title.includes('Lorcana')) {
+                icon.src = lorcanaIcon
+
+            } else if (title.includes('Dungeons')) {
+                icon.src = dndIcon
+
+            } else if (title.includes('Gundam')) {
+                icon.src = gndmIcon
+
+            } else if (title.includes('Piece')) {
+                icon.src = onepIcon
+
+            } else if (title.includes('Tekken')) {
+                icon.src = tknIcon
+            }   
+            
+             else {
                 icon.src = logoIcon
           
             };

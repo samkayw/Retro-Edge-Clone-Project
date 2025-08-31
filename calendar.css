@@ -216,9 +216,10 @@
 
 #left-align-tag {
   display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: space-between;
+  flex-direction: row-reverse;
+  /* align-items: end; */
+  /* justify-content: space-between; */
+  gap: 24px;
   width: 80vw;
   margin-top: 1%;
 
