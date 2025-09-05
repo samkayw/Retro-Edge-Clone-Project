@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+        <!-- general style sheet -->
+    <link rel="stylesheet" href="style.css">
+
+        <!-- calendar style sheet -->
+    <link rel="stylesheet" href="calendar.css">
+
+    <!-- navigation style sheet -->
+     <link rel="stylesheet" href="navigation.css">
+
+    <!-- hero style sheet -->
+      <link rel="stylesheet" href="hero.css">
+
+    <!-- section style sheet -->
+     <link rel="stylesheet" href="sections.css">
+
+     <!-- footer style sheet -->
+      <link rel="stylesheet" href="footer.css">
+
+    <!-- Google Font import for Chakra Petch -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+
+</head>
+<body>
+     <!-- navigation bar -->
+    <nav class="desktop-nav">
+        <div id="hamburgerMenu" aria-label="Menu Icon" tabindex="0">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span> 
+        </div>
+
+        <!-- lets me control with js -->
+        <div class="navLinks"> 
+            <a  href="index.html" tabindex="1">Home</a>
+            <a  href="about.html" tabindex="2" >About</a>
+            <a  href="#" tabindex="3" id="selected">Calendar</a>
+        </div>
+        
+    </nav>
+
+
+
+
+
+<!-- SURFACE -->
+<section>
+
+    <h1>PRACTICE CALENDAR</h1>
+    <div id="calendar-capture">
+        <header id="calendar-header"></header>
+        <div id="calendar-grid" class="calendar-grid"></div>
+     </div>
+
+     <div id="left-align-tag">
+        <a id="full-subscription" href ="https://calendar.google.com/calendar/ical/3cae1ba52ac23bca99893a1b81869bf4fd06aae62a79f167b7ac76510d26c045%40group.calendar.google.com/public/basic.ics">Subscribe To Calendar</a>
+         <a id="download-png" type="button">Download PNG</a>
+     </div>
+
+</section>  
+
+
+     <footer id="footer-column">
+
+        <!-- left side -->
+        <div id="footer-left">
+            <div>
+                <h3>Contact Us</h3>
+                <p>707-419-6171</p>
+                <a href="#">Email Us</a>
+                <p>Mailing Address:</p>
+                <p>RetroEdge Games</p>
+                <p>2085 Solano Ave</p>
+                <p>Vallejo, CA, 94590</p>
+            </div>
+        </div>
+        <br>
+
+        <!-- right side -->
+        <div id="footer-right">
+            <div>
+                <h3>Store Hours</h3>
+                <p>Mon CLOSED</p>
+                <p>Tue CLOSED</p>
+                <p>Wed: 2p-10p</p>
+                <p>Thu: 2p-10p</p>
+                <p>Fri: 2p-10p</p>
+                <p>Sat: 2p-10p</p>
+                <p>Sun: 2p-10p</p>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+    <script src="practiceCalendar.js"  type="text/javascript"> </script>
+    
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <!-- <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
+
+
+        <script src="script.js"></script>
+        <script src="practiceCalendar.js"></script>
+
+</body>
+</html>

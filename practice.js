@@ -170,7 +170,33 @@ async function downloadScreen() {
         setTimeout(() => URL.revokeObjectURL(url), 1000)
     }, 'image/png');
 
-
  }
+
+    let mq = window.matchMedia("(max-width: 600px)");
+    apply()
+
+    function apply() {
+        mq.matches ? a() : b();
+    }
+    
+
+
+    function a () {
+        document.getElementById('demo3').textContent = 'sip'
+    }
+    
+    function b () {
+        document.getElementById('demo3').textContent = 'SIP'
+    }
+    
+    
+    // check for window size
+if (mq.addEventListener) {
+
+    mq.addEventListener('change', apply);
+    
+} else {
+
+}
 
 

@@ -1,30 +1,14 @@
 
-// 300093958729-8g1fr9o7catq7jtgh26gd6293d0n6qfh.apps.googleusercontent.com
-// AIzaSyACeAr4hZMJ9axLPEMzLPZgQr8XkYAZl1k
+// // 300093958729-8g1fr9o7catq7jtgh26gd6293d0n6qfh.apps.googleusercontent.com
+// // AIzaSyACeAr4hZMJ9axLPEMzLPZgQr8XkYAZl1k
+const mq = window.matchMedia('(max-width: 600px)'); //grab windo size
 
- /* exported gapiLoaded */
-      /* exported gisLoaded */
-      /* exported handleAuthClick */
-      /* exported handleSignoutClick */
-
-      // TODO(developer): Set to client ID and API key from the Developer Console
-    //   const CLIENT_ID = '300093958729-8g1fr9o7catq7jtgh26gd6293d0n6qfh.apps.googleusercontent.com';
       const API_KEY = 'AIzaSyACeAr4hZMJ9axLPEMzLPZgQr8XkYAZl1k';
       const PUBLIC_CAL_ID = '3cae1ba52ac23bca99893a1b81869bf4fd06aae62a79f167b7ac76510d26c045@group.calendar.google.com';
 
       // Discovery doc URL for APIs used by the quickstart
       const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
 
-      // Authorization scopes required by the API; multiple scopes can be
-      // included, separated by spaces.
-    //   const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
-
-    //   let tokenClient;
-    //   let gapiInited = false;
-    //   let gisInited = false;
-
-    //   document.getElementById('authorize_button').style.visibility = 'hidden';
-//   document.getElementById('signout_button').style.visibility = 'hidden';
 
       /**
        * Callback after api.js is loaded.
@@ -47,74 +31,8 @@
           listUpcomingEvents();
       }
 
-      /**
-       * Callback after Google Identity Services are loaded.
-       */
-    //   function gisLoaded() {
-    //     tokenClient = google.accounts.oauth2.initTokenClient({
-    //       client_id: CLIENT_ID,
-    //       scope: SCOPES,
-    //       callback: '', // defined later
-    //     });
-    //     // gisInited = true;
-    //     // maybeEnableButtons();
-    //   }
 
-      /**
-       * Enables user interaction after all libraries are loaded.
-       */
-    //   function maybeEnableButtons() {
-    //     if (gapiInited && gisInited) {
-    //       document.getElementById('authorize_button').style.visibility = 'visible';
-    //     }
-    //   }
-
-      /**
-       *  Sign in the user upon button click.
-       */
-// SIGN IN 
-    //   function handleAuthClick() {
-    //     tokenClient.callback = async (resp) => {
-    //       if (resp.error !== undefined) {
-    //         throw (resp);
-    //       }
-    //       document.getElementById('signout_button').style.visibility = 'visible';
-    //       document.getElementById('authorize_button').innerText = 'Refresh';
-    //       await listUpcomingEvents();
-    //     };
-
-    //     if (gapi.client.getToken() === null) {
-    //       // Prompt the user to select a Google Account and ask for consent to share their data
-    //       // when establishing a new session.
-    //       tokenClient.requestAccessToken({prompt: 'consent'});
-    //     } else {
-    //       // Skip display of account chooser and consent dialog for an existing session.
-    //       tokenClient.requestAccessToken({prompt: ''});
-    //     }
-    //   }
-// SIGN IN
-      /**
-       *  Sign out the user upon button click.
-       */
-//SIGN OUT
-    //   function handleSignoutClick() {
-    //     const token = gapi.client.getToken();
-    //     if (token !== null) {
-    //       google.accounts.oauth2.revoke(token.access_token);
-    //       gapi.client.setToken('');
-    //       document.getElementById('content').innerText = '';
-    //       document.getElementById('authorize_button').innerText = 'Authorize';
-    //       document.getElementById('signout_button').style.visibility = 'hidden';
-    //     }
-    //   }
-//SIGN OUT
-      /**
-       * Print the summary and start datetime/date of the next ten events in
-       * the authorized user's calendar. If no events are found an
-       * appropriate message is printed.
-       */
-
-      //async function
+//async grab calendar events
       async function listUpcomingEvents() {
         //create a response variable to be packed later
         let response;
@@ -123,7 +41,7 @@
             // API Calls List
             
 
-                // derive month/year here
+            // derive month/year here
             const now   = new Date();
             const year  = now.getFullYear();
             const month = now.getMonth(); // 0 = Jan
@@ -441,6 +359,7 @@ function renderCalendar(events, month, year) {
      
       
 }
+
 
 //creates the hook for our button
 //listen for the when the user clicks the button 
