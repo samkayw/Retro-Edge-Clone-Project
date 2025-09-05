@@ -1,7 +1,7 @@
 
 // // 300093958729-8g1fr9o7catq7jtgh26gd6293d0n6qfh.apps.googleusercontent.com
 // // AIzaSyACeAr4hZMJ9axLPEMzLPZgQr8XkYAZl1k
-const mq = window.matchMedia('(max-width: 600px)'); //grab windo size
+// const mq = window.matchMedia('(max-width: 600px)'); //grab windo size
 
       const API_KEY = 'AIzaSyACeAr4hZMJ9axLPEMzLPZgQr8XkYAZl1k';
       const PUBLIC_CAL_ID = '3cae1ba52ac23bca99893a1b81869bf4fd06aae62a79f167b7ac76510d26c045@group.calendar.google.com';
