@@ -1,13 +1,18 @@
-let mq = window.matchMedia('(max-width: 900px)'); //grab window size
-// renderCalendarType()
+let mq = window.matchMedia('(max-width: 600px)'); //grab window size
+
+//calendar params cache
+let EVENTS = [];
+let CUR_MONTH = null;
+let CUR_YEAR = null;
+
+
 
    // check for window size
 if (mq.addEventListener) {
 
     mq.addEventListener('change', renderCalendarType);  
-    
+
 } else {
-    
 
 }
 
@@ -81,9 +86,14 @@ if (mq.addEventListener) {
         }
 
         //drill down into response just to get the items and save it into the events
-        const events = response.result.items;
+        const events = response.result.items || [];
         const now = new Date();
-        renderCalendar(events, now.getMonth(), now.getFullYear());
+
+        EVENTS    = events;              // cache for later
+        CUR_MONTH = now.getMonth();
+        CUR_YEAR  = now.getFullYear();
+
+        renderCalendarType();   
 
         //if there's no events show it here
         if (!events || events.length == 0) {
@@ -94,10 +104,17 @@ if (mq.addEventListener) {
       } 
       
 function renderCalendarType() {
-    
-    !mq.matches ? renderCalendar() : renderCalendarMobile()
+    if (CUR_MONTH === null || CUR_YEAR === null) return;  
+    // clear before re-render
+    const grid = document.getElementById('calendar-grid');
+    if (grid) grid.innerHTML = '';                        
 
-}
+    if (mq.matches) {
+        renderCalendarMobile(EVENTS, CUR_MONTH, CUR_YEAR);
+    } else {
+        renderCalendar(EVENTS, CUR_MONTH, CUR_YEAR);
+    }
+    }
 
  
 
