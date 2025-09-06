@@ -282,6 +282,14 @@
 
 
 
+.events {
+  display: flex;
+  width: 100%;
+  background-color: var(--N64-plastic);
+  border: 1px solid var(--royal-king-purple);
+  
+}
+
 
 
  }

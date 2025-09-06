@@ -388,11 +388,11 @@ function renderCalendar(events, month, year) {
       
 }
 
-//MY CALENDAR VARIABLES
+//MOBILE CALENDAR JS
 function renderCalendarMobile(events, month, year) {
     const header = document.getElementById('calendar-header');
     const weekdayNames = [
-        'TEST', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'
+        'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'
     ];
 
     const weekdayLength = weekdayNames.length;

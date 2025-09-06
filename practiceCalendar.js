@@ -301,6 +301,9 @@ function renderCalendar(events, month, year) {
             item.className = 'tooltip event';
             evList.appendChild(item);
 
+
+
+
         });
 
         cell.appendChild(evList);
@@ -460,16 +463,20 @@ function renderCalendarMobile(events, month, year) {
         const cell = document.createElement('div');
         cell.className = 'calendar-day this-month';
 
-        // a) Day number
+        //Day number
         cell.innerHTML = `<div class="day-number">${date} </div>`;
 
-        // b) Event container
+        //Event container
         const evList = document.createElement('div');
         evList.className = 'events';
 
+        //mobile card constainer
+        // const mobileCard = document.createElement('div')
+        // mobileCard.className = 'mobile-event-card'
 
 
-        // c) Attach any events that match this date
+
+        //Attach any events that match this date
         const dateStr = new Date(year, month, date).toISOString().slice(0, 10); // “YYYY-MM-DD”
         events.filter(ev => (ev.start.dateTime || ev.start.date).slice(0, 10) === dateStr).forEach(ev => {
         
@@ -573,18 +580,30 @@ function renderCalendarMobile(events, month, year) {
             item.appendChild(tip)
             item.appendChild(icon);
             item.className = 'tooltip event';
+
+            
             evList.appendChild(item);
+
+
+
+           
+            // body.appendChild(mobileCard)
 
         });
 
-        cell.appendChild(evList);
+        // mobileCard.appendChild(evList)
+        // cell.appendChild(evList);
         grid.appendChild(cell);
+        
+         // event card
+
+            document.body.appendChild(evList)
     }
 
     
 
 
-    // 4) Fill in head of next month so last week is full
+    //Fill in head of next month so last week is full
     const totalCells = firstDay + daysInMonth;
     const need = (7 - (totalCells % 7)) % 7;
     for (let d = 1; d <= need; d++) {
