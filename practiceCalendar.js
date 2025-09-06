@@ -419,7 +419,7 @@ function renderCalendarMobile(events, month, year) {
 
     //mobile card sections skeleton
     const mobileSection = document.getElementById('mobile-calendar-section');
-    // mobileSection.innerHTML = '';
+    mobileSection.innerHTML = '';
 
     
   
@@ -478,8 +478,6 @@ function renderCalendarMobile(events, month, year) {
         // mobileCard.appendChild(evList)
         // cell.appendChild(evList);
         grid.appendChild(cell);
-
-
 
     }
 
