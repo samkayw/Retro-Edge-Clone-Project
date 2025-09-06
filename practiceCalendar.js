@@ -1,4 +1,4 @@
-let mq = window.matchMedia('(max-width: 600px)'); //grab window size
+let mq = window.matchMedia('(max-width: 900px)'); //grab window size
 
 //calendar params cache
 let EVENTS = [];
@@ -413,9 +413,15 @@ function renderCalendarMobile(events, month, year) {
 
     header.innerText = `${monthNames[month]} ${year}`;
 
+    //calendar skeleton
     const grid = document.getElementById('calendar-grid');
     grid.innerHTML = '';
 
+    //mobile card sections skeleton
+    const mobileSection = document.getElementById('mobile-calendar-section');
+    // mobileSection.innerHTML = '';
+
+    
   
     //insert days of the week headers
     for (let i = 0; weekdayLength > i; i++) {
@@ -462,23 +468,33 @@ function renderCalendarMobile(events, month, year) {
     for (let date = 1; date <= daysInMonth; date++) {
         const cell = document.createElement('div');
         cell.className = 'calendar-day this-month';
+        console.log(`${date}`)
 
         //Day number
         cell.innerHTML = `<div class="day-number">${date} </div>`;
 
-        //Event container
+
+    
+        // mobileCard.appendChild(evList)
+        // cell.appendChild(evList);
+        grid.appendChild(cell);
+
+
+
+    }
+
+
+
+    for (let date = 1; date <= daysInMonth; date++) {
+                //Event container
         const evList = document.createElement('div');
         evList.className = 'events';
 
-        //mobile card constainer
-        // const mobileCard = document.createElement('div')
-        // mobileCard.className = 'mobile-event-card'
-
-
-
         //Attach any events that match this date
-        const dateStr = new Date(year, month, date).toISOString().slice(0, 10); // “YYYY-MM-DD”
+        let dateStr = new Date(year, month, date).toISOString().slice(0, 10); // “YYYY-MM-DD”
+    
         events.filter(ev => (ev.start.dateTime || ev.start.date).slice(0, 10) === dateStr).forEach(ev => {
+            console.log('event')
         
             const item = document.createElement('div');
             const title = ev.summary;
@@ -535,9 +551,9 @@ function renderCalendarMobile(events, month, year) {
 
             } else if (title.includes('Tekken')) {
                 icon.src = tknIcon
-            }   
+            }
             
-             else {
+            else {
                 icon.src = logoIcon
           
             };
@@ -583,22 +599,20 @@ function renderCalendarMobile(events, month, year) {
 
             
             evList.appendChild(item);
+            
 
 
 
            
             // body.appendChild(mobileCard)
+            // event card
+            mobileSection.appendChild(evList)
 
         });
 
-        // mobileCard.appendChild(evList)
-        // cell.appendChild(evList);
-        grid.appendChild(cell);
-        
-         // event card
 
-            document.body.appendChild(evList)
     }
+
 
     
 

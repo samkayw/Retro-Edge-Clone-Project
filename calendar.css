@@ -238,9 +238,13 @@
 
 }
 
+#mobile-calendar-section {
+  display: none;
+}
+
  /* ################################################################################################# */
 
- @media screen and (max-width: 600px) {
+ @media screen and (max-width: 900px) {
 
 
   .calendar-grid{
@@ -284,10 +288,15 @@
 
 .events {
   display: flex;
-  width: 100%;
+  width: 90vw;
   background-color: var(--N64-plastic);
   border: 1px solid var(--royal-king-purple);
   
+}
+
+
+#mobile-calendar-section {
+  display: block;
 }
 
 
