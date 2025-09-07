@@ -483,21 +483,28 @@ function renderCalendarMobile(events, month, year) {
 
 
 
+    //loops for all the days in the month
     for (let date = 1; date <= daysInMonth; date++) {
-                //Event container
+
+        //building the container cards that go underneath the calendar
         const evList = document.createElement('div');
         evList.className = 'events';
 
-        //Attach any events that match this date
-        let dateStr = new Date(year, month, date).toISOString().slice(0, 10); // “YYYY-MM-DD”
+        //YYYY-MM-DD
+        let dateStr = new Date(year, month, date).toISOString().slice(0, 10); // 
+        console.log(dateStr)
     
+        //filter events out into groups matching the corresponding YYYY-MM-DD
         events.filter(ev => (ev.start.dateTime || ev.start.date).slice(0, 10) === dateStr).forEach(ev => {
-            console.log('event')
-        
+
             const item = document.createElement('div');
+
             const title = ev.summary;
+
             const icon = document.createElement('img');
+
             const btn = document.createElement('a')
+
             const eDesc = ev.description;
 
             // Start and end times
@@ -595,15 +602,10 @@ function renderCalendarMobile(events, month, year) {
             item.appendChild(icon);
             item.className = 'tooltip event';
 
+            console.log(item)
+
             
             evList.appendChild(item);
-            
-
-
-
-           
-            // body.appendChild(mobileCard)
-            // event card
             mobileSection.appendChild(evList)
 
         });

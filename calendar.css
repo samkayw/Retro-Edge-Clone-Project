@@ -288,10 +288,19 @@
 
 .events {
   display: flex;
+  flex-direction: column;
+  width: 90vw;
+  gap: 10px;
+  /* background-color: var(--N64-plastic);
+  border: 1px solid var(--royal-king-purple); */
+  
+}
+
+.event {
+  display: block;
   width: 90vw;
   background-color: var(--N64-plastic);
   border: 1px solid var(--royal-king-purple);
-  
 }
 
 
