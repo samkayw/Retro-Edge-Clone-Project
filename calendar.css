@@ -308,6 +308,22 @@
   display: block;
 }
 
+.calendar-day:nth-last-child(1) {
+    border-bottom-right-radius: 0px;
+}
+
+.calendar-day:nth-last-child(7) {
+    border-bottom-left-radius: 0px;
+}
+
+#calendar-header {
+
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+
+      
+    }
+
 
 
  }
