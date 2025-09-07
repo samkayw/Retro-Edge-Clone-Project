@@ -564,20 +564,20 @@ function renderCalendarMobile(events, month, year) {
             };
 
             //create the tool tip
-            const tip = document.createElement('span');
-            tip.className = 'tooltiptext';
+            // const tip = document.createElement('span');
+            // tip.className = 'tooltiptext';
         
             //create the header text and add it to the tool tip
             const titleLine = document.createElement('strong')
             titleLine.className = 'event-title'
             titleLine.textContent = title;
-            tip.appendChild(titleLine)
+            item.appendChild(titleLine)
 
             //create the event times and add it to the tooltip
             const times = document.createElement('p')
             times.id = 'event-times'
             times.textContent = `${eventStartTime} ${eventEndTime}`
-            tip.appendChild(times)
+            item.appendChild(times)
 
             // create event description and put it in the tool tip
             const descBlock = document.createElement('h5')
@@ -585,20 +585,20 @@ function renderCalendarMobile(events, month, year) {
             //flag security issue for XSS attacks and a solution for this
             //look into dom purify and white listing allowable tags
             descBlock.innerHTML = eDesc;
-            tip.appendChild(descBlock)
+            item.appendChild(descBlock)
 
             //add a button to the tool tip
             btn.innerText = 'Add To My Calendar'
             btn.className = 'tooltip-button'
             btn.id = 'tool-tip-btn'
             btn.href = ''
-            tip.appendChild(btn)
+            evList.appendChild(btn)
 
             //give a class to the icon for style
             icon.className = 'calendar-icon';
         
 
-            item.appendChild(tip)
+            // item.appendChild(tip)
             item.appendChild(icon);
             item.className = 'tooltip event';
 
@@ -617,7 +617,7 @@ function renderCalendarMobile(events, month, year) {
     
 
 
-    //Fill in head of next month so last week is full
+    //fill in head of next month so last week is full
     const totalCells = firstDay + daysInMonth;
     const need = (7 - (totalCells % 7)) % 7;
     for (let d = 1; d <= need; d++) {
@@ -636,7 +636,7 @@ function renderCalendarMobile(events, month, year) {
 
 
 
-    //toggle the classes 
+    // //toggle the classes 
     function expandToolTip(e) {
         // grabs the closest calendar icon
         const icon = e.target.closest('.calendar-icon') //get the icon I clicked
@@ -674,7 +674,7 @@ function renderCalendarMobile(events, month, year) {
     }
 
 
-    //close icon if you click outside of the icon
+    // //close icon if you click outside of the icon
     document.addEventListener('click', function (e) {
 
         const userClick = e.target.className
