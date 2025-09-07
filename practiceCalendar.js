@@ -566,18 +566,22 @@ function renderCalendarMobile(events, month, year) {
             //create the tool tip
             // const tip = document.createElement('span');
             // tip.className = 'tooltiptext';
+
+            //event block
+            const eventBlock = document.createElement('div')
+            eventBlock.className = 'event-block'
         
             //create the header text and add it to the tool tip
             const titleLine = document.createElement('strong')
             titleLine.className = 'event-title'
             titleLine.textContent = title;
-            item.appendChild(titleLine)
+            eventBlock.appendChild(titleLine)
 
             //create the event times and add it to the tooltip
             const times = document.createElement('p')
             times.id = 'event-times'
             times.textContent = `${eventStartTime} ${eventEndTime}`
-            item.appendChild(times)
+            eventBlock.appendChild(times)
 
             // create event description and put it in the tool tip
             const descBlock = document.createElement('h5')
@@ -604,7 +608,7 @@ function renderCalendarMobile(events, month, year) {
 
             console.log(item)
 
-            
+            item.appendChild(eventBlock)
             evList.appendChild(item);
             mobileSection.appendChild(evList)
 

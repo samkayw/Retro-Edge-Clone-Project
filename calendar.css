@@ -348,7 +348,9 @@
   color: var(--white);
   font-weight: lighter;
   font-size: 16px;
+  text-align: left;
   padding-bottom: 8px;
+  
 }
 
 /* event time */
@@ -357,10 +359,19 @@
 }
 
 .tooltip {
-    flex-direction: row-reverse;
-    position: relative;
     display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    gap: 16px;
+    /* justify-content:space-between; */
+    position: relative;
+    
+    
     /* border-bottom: 1px dotted black; */
+}
+
+.event-block {
+  align-items: left;
 }
 
 /* TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP  */
