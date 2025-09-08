@@ -1,16 +1,21 @@
-let mq = window.matchMedia('(max-width:600px)') //grab window size
+let mq = window.matchMedia('(max-width: 900px)'); //grab window size
 
-//cache event params
+//calendar params cache
 let EVENTS = [];
 let CUR_MONTH = null;
 let CUR_YEAR = null;
 
-//window size listener
+
+
+   // check for window size
 if (mq.addEventListener) {
-    mq.addEventListener('change', renderCalendarType)
+
+    mq.addEventListener('change', renderCalendarType);  
+
 } else {
 
 }
+
 
       const API_KEY = 'AIzaSyACeAr4hZMJ9axLPEMzLPZgQr8XkYAZl1k';
       const PUBLIC_CAL_ID = '3cae1ba52ac23bca99893a1b81869bf4fd06aae62a79f167b7ac76510d26c045@group.calendar.google.com';
@@ -81,42 +86,42 @@ if (mq.addEventListener) {
         }
 
         //drill down into response just to get the items and save it into the events
-        const events = response.result.items;
+        const events = response.result.items || [];
         const now = new Date();
-          
-          //assign cached variables to be used outside of this function 
-          EVENTS = events;
-          CUR_MONTH = now.getMonth();
-          CUR_YEAR = now.getFullYear();
 
-          renderCalendarType();
+        EVENTS    = events;              // cache for later
+        CUR_MONTH = now.getMonth();
+        CUR_YEAR  = now.getFullYear();
+
+        renderCalendarType();   
 
         //if there's no events show it here
         if (!events || events.length == 0) {
           document.getElementById('content').innerText = 'No events found.';
           return;
         }
+        
       } 
-    
+      
 function renderCalendarType() {
-    if (CUR_MONTH === null || CUR_YEAR === null) return; //check if api calls are there
-    const grid = document.getElementById('calendar-grid'); //clear calendar before switching
-    if (grid) grid.innerHTML = '';
+    if (CUR_MONTH === null || CUR_YEAR === null) return;  
+    // clear before re-render
+    const grid = document.getElementById('calendar-grid');
+    if (grid) grid.innerHTML = '';                        
 
-    //check window size and put the right calendar type depending on screen width
     if (mq.matches) {
         renderCalendarMobile(EVENTS, CUR_MONTH, CUR_YEAR);
     } else {
         renderCalendar(EVENTS, CUR_MONTH, CUR_YEAR);
     }
-
     }
-        
 
+ 
 
 
 //MY CALENDAR VARIABLES
 function renderCalendar(events, month, year) {
+    console.log('this is desktop')
     const header = document.getElementById('calendar-header');
     const weekdayNames = [
         'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'
@@ -295,6 +300,9 @@ function renderCalendar(events, month, year) {
             item.appendChild(icon);
             item.className = 'tooltip event';
             evList.appendChild(item);
+
+
+
 
         });
 
@@ -388,11 +396,12 @@ function renderCalendar(events, month, year) {
       
 }
 
-//MOBILE CALENDAR JS
+//MY CALENDAR VARIABLES
 function renderCalendarMobile(events, month, year) {
+    console.log('this is mobile')
     const header = document.getElementById('calendar-header');
     const weekdayNames = [
-        'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'
+        'SUN', 'MON', 'TUES', 'WED', 'THU', 'FRI', 'SAT'
     ];
 
     const weekdayLength = weekdayNames.length;
@@ -404,9 +413,15 @@ function renderCalendarMobile(events, month, year) {
 
     header.innerText = `${monthNames[month]} ${year}`;
 
+    //calendar skeleton
     const grid = document.getElementById('calendar-grid');
     grid.innerHTML = '';
 
+    //mobile card sections skeleton
+    const mobileSection = document.getElementById('mobile-calendar-section');
+    mobileSection.innerHTML = '';
+
+    
   
     //insert days of the week headers
     for (let i = 0; weekdayLength > i; i++) {
@@ -453,24 +468,43 @@ function renderCalendarMobile(events, month, year) {
     for (let date = 1; date <= daysInMonth; date++) {
         const cell = document.createElement('div');
         cell.className = 'calendar-day this-month';
+        console.log(`${date}`)
 
-        // a) Day number
+        //Day number
         cell.innerHTML = `<div class="day-number">${date} </div>`;
 
-        // b) Event container
+
+    
+        // mobileCard.appendChild(evList)
+        // cell.appendChild(evList);
+        grid.appendChild(cell);
+
+    }
+
+
+
+    //loops for all the days in the month
+    for (let date = 1; date <= daysInMonth; date++) {
+
+        //building the container cards that go underneath the calendar
         const evList = document.createElement('div');
         evList.className = 'events';
 
-
-
-        // c) Attach any events that match this date
-        const dateStr = new Date(year, month, date).toISOString().slice(0, 10); // “YYYY-MM-DD”
+        //YYYY-MM-DD
+        let dateStr = new Date(year, month, date).toISOString().slice(0, 10); // 
+        console.log(dateStr)
+    
+        //filter events out into groups matching the corresponding YYYY-MM-DD
         events.filter(ev => (ev.start.dateTime || ev.start.date).slice(0, 10) === dateStr).forEach(ev => {
-        
+
             const item = document.createElement('div');
+
             const title = ev.summary;
+
             const icon = document.createElement('img');
+
             const btn = document.createElement('a')
+
             const eDesc = ev.description;
 
             // Start and end times
@@ -522,28 +556,32 @@ function renderCalendarMobile(events, month, year) {
 
             } else if (title.includes('Tekken')) {
                 icon.src = tknIcon
-            }   
+            }
             
-             else {
+            else {
                 icon.src = logoIcon
           
             };
 
             //create the tool tip
-            const tip = document.createElement('span');
-            tip.className = 'tooltiptext';
+            // const tip = document.createElement('span');
+            // tip.className = 'tooltiptext';
+
+            //event block
+            const eventBlock = document.createElement('div')
+            eventBlock.className = 'event-block'
         
             //create the header text and add it to the tool tip
             const titleLine = document.createElement('strong')
             titleLine.className = 'event-title'
             titleLine.textContent = title;
-            tip.appendChild(titleLine)
+            eventBlock.appendChild(titleLine)
 
             //create the event times and add it to the tooltip
             const times = document.createElement('p')
             times.id = 'event-times'
             times.textContent = `${eventStartTime} ${eventEndTime}`
-            tip.appendChild(times)
+            eventBlock.appendChild(times)
 
             // create event description and put it in the tool tip
             const descBlock = document.createElement('h5')
@@ -551,34 +589,39 @@ function renderCalendarMobile(events, month, year) {
             //flag security issue for XSS attacks and a solution for this
             //look into dom purify and white listing allowable tags
             descBlock.innerHTML = eDesc;
-            tip.appendChild(descBlock)
+            item.appendChild(descBlock)
 
             //add a button to the tool tip
             btn.innerText = 'Add To My Calendar'
             btn.className = 'tooltip-button'
             btn.id = 'tool-tip-btn'
             btn.href = ''
-            tip.appendChild(btn)
+            evList.appendChild(btn)
 
             //give a class to the icon for style
             icon.className = 'calendar-icon';
         
 
-            item.appendChild(tip)
+            // item.appendChild(tip)
             item.appendChild(icon);
             item.className = 'tooltip event';
+
+            console.log(item)
+
+            item.appendChild(eventBlock)
             evList.appendChild(item);
+            mobileSection.appendChild(evList)
 
         });
 
-        cell.appendChild(evList);
-        grid.appendChild(cell);
+
     }
+
 
     
 
 
-    // 4) Fill in head of next month so last week is full
+    //fill in head of next month so last week is full
     const totalCells = firstDay + daysInMonth;
     const need = (7 - (totalCells % 7)) % 7;
     for (let d = 1; d <= need; d++) {
@@ -597,7 +640,7 @@ function renderCalendarMobile(events, month, year) {
 
 
 
-    //toggle the classes 
+    // //toggle the classes 
     function expandToolTip(e) {
         // grabs the closest calendar icon
         const icon = e.target.closest('.calendar-icon') //get the icon I clicked
@@ -635,7 +678,7 @@ function renderCalendarMobile(events, month, year) {
     }
 
 
-    //close icon if you click outside of the icon
+    // //close icon if you click outside of the icon
     document.addEventListener('click', function (e) {
 
         const userClick = e.target.className
