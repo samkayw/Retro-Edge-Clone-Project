@@ -637,7 +637,7 @@ function renderCalendarMobile(events, month, year) {
 
     function dayClick(e) {
         // grabs the closest calendar icon
-        const cell = e.target.closest('.calendar-day') //get the icon I clicked
+        const cell = e.target.closest('.this-month') //get the icon I clicked
         if (!cell) return;
         console.log(cell)
 
