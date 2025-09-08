@@ -378,6 +378,10 @@
   
 }
 
+.selected {
+  background-color: var(--royal-king-purple);
+}
+
 /* TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP  */
 
  }
