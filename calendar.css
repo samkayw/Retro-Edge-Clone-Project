@@ -380,6 +380,14 @@
 
 .selected {
   background-color: var(--royal-king-purple);
+  text-decoration: underline;
+  text-decoration-color: var(--neon-green);
+  text-underline-offset: 5px;
+  text-decoration-thickness: 3px;
+}
+
+.other-month {
+  opacity: .6;
 }
 
 /* TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP  */
