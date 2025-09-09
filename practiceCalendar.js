@@ -586,6 +586,7 @@ function renderCalendarMobile(events, month, year) {
             // create event description and put it in the tool tip
             const descBlock = document.createElement('h5')
             descBlock.className = 'event-desc'
+
             //flag security issue for XSS attacks and a solution for this
             //look into dom purify and white listing allowable tags
             descBlock.innerHTML = eDesc;
@@ -634,100 +635,187 @@ function renderCalendarMobile(events, month, year) {
     const cGrid = document.getElementById('calendar-grid')
 
     cGrid.addEventListener('click', dayClick)
+    document.body.addEventListener('click', userClicked)
 
     function dayClick(e) {
-        // grabs the closest calendar icon
-        const cell = e.target.closest('.this-month') //get the icon I clicked
+        const cell = e.target.closest('.this-month');
         if (!cell) return;
-        console.log(cell)
 
         const selectedCells = cGrid.querySelectorAll('.calendar-day.this-month.selected');
         selectedCells.forEach(t => {
             if (t !== cell) t.classList.remove('selected');
         });
 
-        cell.classList.toggle(('selected'))
-        // const card = icon.closest('.event');          //find the icon's event ifo
-        // const tip = card.querySelector('.tooltiptext'); //get the event info's tooltip
-        // if (!tip) return;
-        // // const isOpen = true
+        cell.classList.toggle('selected');
 
-        // //checks if other tooltips are open other than the one we have open right now
-        // const openTips = cGrid.querySelectorAll('.tooltiptext.expand');
-        // openTips.forEach(t => {
-        //     if (t !== tip) t.classList.remove('expand');
-        // });
-    }
+        // Get clicked day number (remove whitespace just in case)
+        const dayNumber = parseInt(cell.querySelector('.day-number').textContent.trim(), 10);
 
-    // cGrid.removeEventListener('click', expandToolTip)
+        // Construct YYYY-MM-DD string
+        const clickedDate = new Date(CUR_YEAR, CUR_MONTH, dayNumber).toISOString().slice(0, 10);
 
-    // //listen in on the calendar
-    // cGrid.addEventListener('click', expandToolTip)
+        // Clear previous event cards
+        const mobileSection = document.getElementById('mobile-calendar-section');
+        mobileSection.innerHTML = '';
 
+        // Re-render only the events that match clickedDate
+        const filteredEvents = EVENTS.filter(ev =>
+            (ev.start.dateTime || ev.start.date).slice(0, 10) === clickedDate
+        );
 
+        // If no events found
+        if (filteredEvents.length === 0) {
+            const emptyMsg = document.createElement('p');
+            emptyMsg.textContent = 'No events for this day.';
+            mobileSection.appendChild(emptyMsg);
+            return;
+        }
 
-    // // //toggle the classes 
-    // function expandToolTip(e) {
-    //     // grabs the closest calendar icon
-    //     const icon = e.target.closest('.calendar-icon') //get the icon I clicked
-    //     if (!icon) return;
-        
-    //     const card = icon.closest('.event');          //find the icon's event ifo
-    //     const tip = card.querySelector('.tooltiptext'); //get the event info's tooltip
-    //     if (!tip) return;
-    //     // const isOpen = true
+        filteredEvents.forEach(ev => {
+            const item = document.createElement('div');
+            const title = ev.summary;
+            const icon = document.createElement('img');
+            const btn = document.createElement('a');
+            const eDesc = ev.description;
 
-    //     //checks if other tooltips are open other than the one we have open right now
-    //     const openTips = cGrid.querySelectorAll('.tooltiptext.expand');
-    //     openTips.forEach(t => {
-    //         if (t !== tip) t.classList.remove('expand');
-    //     });
+            let eventStartTime;
+            let eventEndTime;
+            if (ev.start.dateTime) {
+                const dst = new Date(ev.start.dateTime);
+                eventStartTime = dst.toLocaleTimeString(["en-us"], { hour: 'numeric', minute: '2-digit' });
+                const dnt = new Date(ev.end.dateTime);
+                eventEndTime = `- ${dnt.toLocaleTimeString(["en-us"], { hour: 'numeric', minute: '2-digit' })}`;
+            } else {
+                eventStartTime = 'All Day';
+                eventEndTime = '';
+            }
 
-    //     //get the closest event description and then display it
-    //     const eventDesc = tip.querySelector('.event-desc')
-    //     //close it if you click on another icon
-    //     const openDescs = cGrid.querySelectorAll('.event-desc.show-desc');
-    //     openDescs.forEach(t => {
-    //         if (t !== eventDesc) t.classList.remove('show-desc')
-    //     })
-        
-    //     const eventBtn = tip.querySelector('.tooltip-button')
-    //     const openBtns = cGrid.querySelectorAll('.tooltip-button.show-desc');
-    //     openBtns.forEach(t => {
-    //         if (t !== eventBtn) t.classList.remove('show-desc')
-    //     })
-        
-    //     //toggle it on and off
-    //     eventBtn.classList.toggle('show-desc')
-    //     eventDesc.classList.toggle('show-desc')
-    //     tip.classList.toggle('expand'); //toggle it
-    // }
+            // Assign icon based on title
+            if (title.includes('Smash')) icon.src = smashIcon;
+            else if (title.includes('Pokemon')) icon.src = pokeIcon;
+            else if (title.includes('Guilty')) icon.src = ggIcon;
+            else if (title.includes('Street')) icon.src = sfIcon;
+            else if (title.includes('FGC')) icon.src = fgcIcon;
+            else if (title.includes('Magic')) icon.src = mtgIcon;
+            else if (title.includes('Lorcana')) icon.src = lorcanaIcon;
+            else if (title.includes('Dungeons')) icon.src = dndIcon;
+            else if (title.includes('Gundam')) icon.src = gndmIcon;
+            else if (title.includes('Piece')) icon.src = onepIcon;
+            else if (title.includes('Tekken')) icon.src = tknIcon;
+            else icon.src = logoIcon;
 
+            icon.className = 'calendar-icon';
 
-    // //close icon if you click outside of the icon
-    // document.addEventListener('click', function (e) {
+            const eventBlock = document.createElement('div');
+            eventBlock.className = 'event-block';
 
-    //     const userClick = e.target.className
-    //     console.log(userClick)
+            const titleLine = document.createElement('strong');
+            titleLine.className = 'event-title';
+            titleLine.textContent = title;
 
-    //     if (userClick !== 'calendar-icon' && userClick !== 'tooltip-button show-desc' ) {
-    //         // closes it if anything other than an icon is clicked
-    //         const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand')
-    //         eventMenu.forEach(t => t.classList.remove('expand'));
+            const times = document.createElement('p');
+            times.id = 'event-times';
+            times.textContent = `${eventStartTime} ${eventEndTime}`;
 
-    //         //remove other event descriptions
-    //         const eventDesc = cGrid.querySelectorAll('.event-desc.show-desc')
-    //         eventDesc.forEach(t => t.classList.remove('show-desc'))
+            const descBlock = document.createElement('h5');
+            descBlock.className = 'event-desc';
+            descBlock.innerHTML = eDesc;
 
-    //         //remove other buttons
-    //         const eventBtn = cGrid.querySelectorAll('.tooltip-button.show-desc')
-    //         eventBtn.forEach(t => t.classList.remove('show-desc'))
-            
-    //     }
+            btn.innerText = 'Add To My Calendar';
+            btn.className = 'tooltip-button';
+            btn.id = 'tool-tip-btn';
+            btn.href = '';
+
+            eventBlock.appendChild(titleLine);
+            eventBlock.appendChild(times);
+
+            item.appendChild(icon);
+            item.appendChild(eventBlock);
+            item.appendChild(descBlock);
+            item.appendChild(btn);
+            item.className = 'tooltip event';
+
+            const evList = document.createElement('div');
+            evList.className = 'events';
+            evList.appendChild(item);
+
+            mobileSection.appendChild(evList);
+        });
+
     
-    // })
+
+
+
+        // cGrid.removeEventListener('click', expandToolTip)
+
+        // //listen in on the calendar
+        // cGrid.addEventListener('click', expandToolTip)
+
+
+
+        // // //toggle the classes 
+        // function expandToolTip(e) {
+        //     // grabs the closest calendar icon
+        //     const icon = e.target.closest('.calendar-icon') //get the icon I clicked
+        //     if (!icon) return;
+        
+        //     const card = icon.closest('.event');          //find the icon's event ifo
+        //     const tip = card.querySelector('.tooltiptext'); //get the event info's tooltip
+        //     if (!tip) return;
+        //     // const isOpen = true
+
+        //     //checks if other tooltips are open other than the one we have open right now
+        //     const openTips = cGrid.querySelectorAll('.tooltiptext.expand');
+        //     openTips.forEach(t => {
+        //         if (t !== tip) t.classList.remove('expand');
+        //     });
+
+        //     //get the closest event description and then display it
+        //     const eventDesc = tip.querySelector('.event-desc')
+        //     //close it if you click on another icon
+        //     const openDescs = cGrid.querySelectorAll('.event-desc.show-desc');
+        //     openDescs.forEach(t => {
+        //         if (t !== eventDesc) t.classList.remove('show-desc')
+        //     })
+        
+        //     const eventBtn = tip.querySelector('.tooltip-button')
+        //     const openBtns = cGrid.querySelectorAll('.tooltip-button.show-desc');
+        //     openBtns.forEach(t => {
+        //         if (t !== eventBtn) t.classList.remove('show-desc')
+        //     })
+        
+        //     //toggle it on and off
+        //     eventBtn.classList.toggle('show-desc')
+        //     eventDesc.classList.toggle('show-desc')
+        //     tip.classList.toggle('expand'); //toggle it
+        // }
+
+
+        // //close icon if you click outside of the icon
+        // document.addEventListener('click', function (e) {
+
+        //     const userClick = e.target.className
+        //     console.log(userClick)
+
+        //     if (userClick !== 'calendar-icon' && userClick !== 'tooltip-button show-desc' ) {
+        //         // closes it if anything other than an icon is clicked
+        //         const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand')
+        //         eventMenu.forEach(t => t.classList.remove('expand'));
+
+        //         //remove other event descriptions
+        //         const eventDesc = cGrid.querySelectorAll('.event-desc.show-desc')
+        //         eventDesc.forEach(t => t.classList.remove('show-desc'))
+
+        //         //remove other buttons
+        //         const eventBtn = cGrid.querySelectorAll('.tooltip-button.show-desc')
+        //         eventBtn.forEach(t => t.classList.remove('show-desc'))
+            
+        //     }
+    
+        // })
      
       
+    }
 }
 
 
