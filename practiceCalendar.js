@@ -401,7 +401,7 @@ function renderCalendarMobile(events, month, year) {
     console.log('this is mobile')
     const header = document.getElementById('calendar-header');
     const weekdayNames = [
-        'TEST', 'TEST', 'TEST', 'WED', 'THU', 'FRI', 'SAT'
+        'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'
     ];
 
     const weekdayLength = weekdayNames.length;

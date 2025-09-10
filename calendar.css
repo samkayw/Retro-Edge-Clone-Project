@@ -386,8 +386,10 @@
   text-decoration-thickness: 3px;
 }
 
-.other-month {
-  opacity: .6;
+
+
+.calendar-day.other-month > .day-number {
+  opacity: .5;
 }
 
 /* TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP  */
