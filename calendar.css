@@ -30,6 +30,8 @@
   grid-template-columns: repeat(7, 1fr);
   width: 80vw;
   gap: 0px;
+
+  margin-bottom: 1px;
   
 }
 

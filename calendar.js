@@ -105,7 +105,8 @@ if (mq.addEventListener) {
       
 function renderCalendarType() {
     if (CUR_MONTH === null || CUR_YEAR === null) return;  
-    // clear before re-render
+
+    //clear before re-render
     const grid = document.getElementById('calendar-grid');
     if (grid) grid.innerHTML = '';                        
 
@@ -401,7 +402,7 @@ function renderCalendarMobile(events, month, year) {
     console.log('this is mobile')
     const header = document.getElementById('calendar-header');
     const weekdayNames = [
-        'TEST', 'TEST', 'TEST', 'WED', 'THU', 'FRI', 'SAT'
+        'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'
     ];
 
     const weekdayLength = weekdayNames.length;
@@ -617,9 +618,6 @@ function renderCalendarMobile(events, month, year) {
 
     }
 
-
-
-
     //fill in head of next month so last week is full
     const totalCells = firstDay + daysInMonth;
     const need = (7 - (totalCells % 7)) % 7;
@@ -635,38 +633,61 @@ function renderCalendarMobile(events, month, year) {
     const cGrid = document.getElementById('calendar-grid')
 
     cGrid.addEventListener('click', dayClick)
-    document.body.addEventListener('click', userClicked)
+
+    //auto select today
+    const today = new Date();
+    if (today.getMonth() === month && today.getFullYear() === year) {
+        const dayCells = cGrid.querySelectorAll('.calendar-day.this-month');
+
+        //grab every cell and see if its day number matches then click 
+        dayCells.forEach(cell => {
+            const dayText = cell.querySelector('.day-number')?.textContent.trim();
+
+            if (parseInt(dayText) === today.getDate()) {
+
+                //auto click the matching click
+                cell.click();
+                }
+        });
+    }
 
     function dayClick(e) {
+
+        // const today = new Date().toISOString.slice(0, 10)
+
+
+        //grab the closest cell
         const cell = e.target.closest('.this-month');
         if (!cell) return;
 
+        //unselect all cells before selecting
         const selectedCells = cGrid.querySelectorAll('.calendar-day.this-month.selected');
         selectedCells.forEach(t => {
             if (t !== cell) t.classList.remove('selected');
         });
 
+        //apply selected state
         cell.classList.toggle('selected');
 
-        // Get clicked day number (remove whitespace just in case)
+        //get clicked day number
         const dayNumber = parseInt(cell.querySelector('.day-number').textContent.trim(), 10);
 
-        // Construct YYYY-MM-DD string
+        //construct YYYY-MM-DD string
         const clickedDate = new Date(CUR_YEAR, CUR_MONTH, dayNumber).toISOString().slice(0, 10);
 
-        // Clear previous event cards
+        //clear previous event cards
         const mobileSection = document.getElementById('mobile-calendar-section');
         mobileSection.innerHTML = '';
 
-        // Re-render only the events that match clickedDate
+        //render only the events that match clickedDate
         const filteredEvents = EVENTS.filter(ev =>
             (ev.start.dateTime || ev.start.date).slice(0, 10) === clickedDate
         );
 
-        // If no events found
+        //if no events
         if (filteredEvents.length === 0) {
             const emptyMsg = document.createElement('p');
-            emptyMsg.textContent = 'No events for this day.';
+            emptyMsg.textContent = 'No Special Events Today';
             mobileSection.appendChild(emptyMsg);
             return;
         }
@@ -690,7 +711,7 @@ function renderCalendarMobile(events, month, year) {
                 eventEndTime = '';
             }
 
-            // Assign icon based on title
+            //assign icon based on title
             if (title.includes('Smash')) icon.src = smashIcon;
             else if (title.includes('Pokemon')) icon.src = pokeIcon;
             else if (title.includes('Guilty')) icon.src = ggIcon;
@@ -741,78 +762,6 @@ function renderCalendarMobile(events, month, year) {
 
             mobileSection.appendChild(evList);
         });
-
-    
-
-
-
-        // cGrid.removeEventListener('click', expandToolTip)
-
-        // //listen in on the calendar
-        // cGrid.addEventListener('click', expandToolTip)
-
-
-
-        // // //toggle the classes 
-        // function expandToolTip(e) {
-        //     // grabs the closest calendar icon
-        //     const icon = e.target.closest('.calendar-icon') //get the icon I clicked
-        //     if (!icon) return;
-        
-        //     const card = icon.closest('.event');          //find the icon's event ifo
-        //     const tip = card.querySelector('.tooltiptext'); //get the event info's tooltip
-        //     if (!tip) return;
-        //     // const isOpen = true
-
-        //     //checks if other tooltips are open other than the one we have open right now
-        //     const openTips = cGrid.querySelectorAll('.tooltiptext.expand');
-        //     openTips.forEach(t => {
-        //         if (t !== tip) t.classList.remove('expand');
-        //     });
-
-        //     //get the closest event description and then display it
-        //     const eventDesc = tip.querySelector('.event-desc')
-        //     //close it if you click on another icon
-        //     const openDescs = cGrid.querySelectorAll('.event-desc.show-desc');
-        //     openDescs.forEach(t => {
-        //         if (t !== eventDesc) t.classList.remove('show-desc')
-        //     })
-        
-        //     const eventBtn = tip.querySelector('.tooltip-button')
-        //     const openBtns = cGrid.querySelectorAll('.tooltip-button.show-desc');
-        //     openBtns.forEach(t => {
-        //         if (t !== eventBtn) t.classList.remove('show-desc')
-        //     })
-        
-        //     //toggle it on and off
-        //     eventBtn.classList.toggle('show-desc')
-        //     eventDesc.classList.toggle('show-desc')
-        //     tip.classList.toggle('expand'); //toggle it
-        // }
-
-
-        // //close icon if you click outside of the icon
-        // document.addEventListener('click', function (e) {
-
-        //     const userClick = e.target.className
-        //     console.log(userClick)
-
-        //     if (userClick !== 'calendar-icon' && userClick !== 'tooltip-button show-desc' ) {
-        //         // closes it if anything other than an icon is clicked
-        //         const eventMenu = cGrid.querySelectorAll('.tooltiptext.expand')
-        //         eventMenu.forEach(t => t.classList.remove('expand'));
-
-        //         //remove other event descriptions
-        //         const eventDesc = cGrid.querySelectorAll('.event-desc.show-desc')
-        //         eventDesc.forEach(t => t.classList.remove('show-desc'))
-
-        //         //remove other buttons
-        //         const eventBtn = cGrid.querySelectorAll('.tooltip-button.show-desc')
-        //         eventBtn.forEach(t => t.classList.remove('show-desc'))
-            
-        //     }
-    
-        // })
      
       
     }
@@ -846,7 +795,7 @@ async function saveCalendarImage() {
     logging: false, //keep info out of the console
   });
 
-  //download as PNG
+  //download as PNG (with fallback for older Safari)
   if (canvas.toBlob) {
     canvas.toBlob((blob) => {
       const url = URL.createObjectURL(blob); //using the URL api and its property to create a url with the blob data
