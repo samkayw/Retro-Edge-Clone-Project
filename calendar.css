@@ -2,6 +2,11 @@
     color: var(--white);
 }
 
+#monthly-calendar {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
 #my-calendar {
   max-width: 800px;
   margin: 0 auto;
@@ -10,6 +15,10 @@
 }
 
 #calendar-header {
+        box-sizing:border-box;
+        padding-left: 16px;
+        padding-bottom: 12px;
+        padding-top: 12px;
         color: var(--neon-green);
         text-align: left;
         font-size: 2rem;
