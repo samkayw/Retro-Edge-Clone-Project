@@ -244,14 +244,14 @@
   display: none;
 }
 
-#mobile-calendar-section {
-  display: none;
-}
-
  /* ################################################################################################# */
 
  @media screen and (max-width: 900px) {
 
+#monthly-calendar { 
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
 
   .calendar-grid{
     width: 90vw;
@@ -259,11 +259,16 @@
   }
 
   #calendar-header {
+    box-sizing: border-box;
+    font-size: 24px;
+    padding-bottom: 12px;
+    padding-top: 8px;
+    padding-left: 8px;
     width: 90vw;
   }
 
   .calendar-day {
-    min-height: 7vh;
+    min-height: 8vh;
   }
 
   .calendar-icon {
@@ -392,6 +397,16 @@
 
 .calendar-day.other-month > .day-number {
   opacity: .5;
+}
+
+#mobile-calendar-section {
+  margin-bottom: 16px;
+}
+
+
+#full-subscription {
+  text-align: right;
+  width: 100vw;
 }
 
 /* TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP  */
