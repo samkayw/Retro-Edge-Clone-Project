@@ -330,6 +330,7 @@ function renderCalendar(events, month, year) {
 
     //listen in on the calendar
     cGrid.addEventListener('click', expandToolTip)
+    document.addEventListener('click', outSideClick)
 
 
 
@@ -372,7 +373,7 @@ function renderCalendar(events, month, year) {
 
 
     //close icon if you click outside of the icon
-    document.addEventListener('click', function (e) {
+    function outSideClick (e) {
 
         const userClick = e.target.className
         console.log(userClick)
@@ -392,7 +393,7 @@ function renderCalendar(events, month, year) {
             
         }
     
-    })
+    }
      
       
 }
@@ -797,7 +798,7 @@ async function saveCalendarImage() {
 
   //download as PNG (with fallback for older Safari)
   if (canvas.toBlob) {
-    canvas.toBlob((blob) => {
+      canvas.toBlob((blob) => {
       const url = URL.createObjectURL(blob); //using the URL api and its property to create a url with the blob data
       const a = document.createElement('a');
       const stamp = new Date().toISOString().slice(0,10);
@@ -818,6 +819,7 @@ async function saveCalendarImage() {
     a.click();
     a.remove();
   }
+    
 }
 
 
