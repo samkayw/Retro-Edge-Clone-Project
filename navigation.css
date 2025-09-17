@@ -160,4 +160,9 @@ nav {
         
     }
 
+    .bell {
+        text-decoration: underline;
+        border-radius: 100px;
+    }
+
 }

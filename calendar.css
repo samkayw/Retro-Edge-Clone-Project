@@ -294,6 +294,8 @@
 }
 
 .day-number {
+    /* display: inline-block;
+    position: relative; */
     width: 100%;
     height: 100%;
     display: flex;
@@ -302,7 +304,20 @@
     color: var(--neon-green);
     font-weight: bold;
     margin-bottom: 4px;
+    
 }
+/* 
+.day-number::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+} */
 
 
 
@@ -416,6 +431,30 @@
 #full-subscription {
   text-align: right;
   width: 100vw;
+}
+
+.bell {
+  position: relative;
+  
+}
+
+.bell::after {
+  content: "";
+
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+
+  background-color: var(--royal-king-purple);
+
+  bottom: -2px;
+
+}
+
+.day-number.bell {
+  text-decoration: none;
 }
 
 /* TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP TOOLTIP  */

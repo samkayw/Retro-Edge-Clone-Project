@@ -301,14 +301,13 @@ function renderCalendar(events, month, year) {
             item.appendChild(icon);
             item.className = 'tooltip event';
             evList.appendChild(item);
-
-
-
+            
 
         });
 
         cell.appendChild(evList);
         grid.appendChild(cell);
+        
     }
 
     
@@ -473,9 +472,20 @@ function renderCalendarMobile(events, month, year) {
         
 
         //Day number
-        cell.innerHTML = `<div class="day-number">${date} </div>`;
+        cell.innerHTML = `<div class="day-number">${date}</div>`;
 
+        const dateStr = new Date(year, month, date).toISOString().slice(0, 10);
 
+        //some checks if at least one thigns meets the params
+        const hasEvents = events.some(ev => 
+            (ev.start.date || ev.start.dateTime).slice(0,10) === dateStr
+
+        )
+
+        if (hasEvents) {
+            x = cell.querySelector('.day-number')
+            x.classList.add('bell')
+        }
     
         // mobileCard.appendChild(evList)
         // cell.appendChild(evList);
@@ -498,6 +508,10 @@ function renderCalendarMobile(events, month, year) {
     
         //filter events out into groups matching the corresponding YYYY-MM-DD
         events.filter(ev => (ev.start.dateTime || ev.start.date).slice(0, 10) === dateStr).forEach(ev => {
+
+            // console.log(date)
+
+            console.log(ev.start.dateTime)
 
             const item = document.createElement('div');
 
@@ -613,9 +627,7 @@ function renderCalendarMobile(events, month, year) {
             item.appendChild(eventBlock)
             evList.appendChild(item);
             mobileSection.appendChild(evList)
-
         });
-
 
     }
 
@@ -669,6 +681,7 @@ function renderCalendarMobile(events, month, year) {
 
         //apply selected state
         cell.classList.toggle('selected');
+        
 
         //get clicked day number
         const dayNumber = parseInt(cell.querySelector('.day-number').textContent.trim(), 10);
