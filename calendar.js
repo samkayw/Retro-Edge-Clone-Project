@@ -701,7 +701,7 @@ function renderCalendarMobile(events, month, year) {
         //if no events
         if (filteredEvents.length === 0) {
             const emptyMsg = document.createElement('p');
-            emptyMsg.textContent = 'No Special Events Today';
+            emptyMsg.textContent = 'Closed';
             mobileSection.appendChild(emptyMsg);
             return;
         }
