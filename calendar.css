@@ -443,9 +443,9 @@
 
   position: absolute;
 
-  width: 10px;
-  height: 10px;
-  border-radius: 100px;
+  width: 8px;
+  height: 8px;
+  /* border-radius: 100px; */
 
   background-color: var(--royal-king-purple);
 
