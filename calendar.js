@@ -1,3 +1,5 @@
+// import DOMPurify from 'dompurify'
+
 let mq = window.matchMedia('(max-width: 900px)'); //grab window size
 
 //calendar params cache
@@ -283,7 +285,7 @@ function renderCalendar(events, month, year) {
             descBlock.className = 'event-desc'
             //flag security issue for XSS attacks and a solution for this
             //look into dom purify and white listing allowable tags
-            descBlock.innerHTML = eDesc;
+            descBlock.innerHTML = DOMPurify.sanitize(eDesc);
             tip.appendChild(descBlock)
 
             //add a button to the tool tip
@@ -754,7 +756,7 @@ function renderCalendarMobile(events, month, year) {
 
             const descBlock = document.createElement('h5');
             descBlock.className = 'event-desc';
-            descBlock.innerHTML = eDesc;
+            descBlock.innerHTML = DOMPurify.sanitize(eDesc);
 
             btn.innerText = 'Add To My Calendar';
             btn.className = 'tooltip-button';
