@@ -253,6 +253,12 @@
   display: none;
 }
 
+#reg-link {
+  color: aqua;
+  text-decoration: underline;
+  display: inline;
+}
+
  /* ################################################################################################# */
 
  @media screen and (max-width: 900px) {
